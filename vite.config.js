@@ -8,5 +8,8 @@ export default ({ command, mode }) => {
 				host: loadEnv(mode, process.cwd()).VITE_SERVER_IP,
 			},
 		}
-	} else return {}
+	} else
+		return {
+			base: "/GION/",
+		}
 }
