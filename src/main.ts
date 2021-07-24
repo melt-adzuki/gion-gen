@@ -13,7 +13,7 @@ regenerate.addEventListener("click", show)
 
 tweet.addEventListener("click", () =>
 	window.open(
-		`https://twitter.com/intent/tweet?hashtags=擬音ジェネレーター&url=https://hijiki02.github.io/gion&text=${content.innerHTML}`
+		`https://twitter.com/intent/tweet?hashtags=擬音ジェネレーター&url=https://hijiki02.github.io/GION/&text=${content.innerHTML}`
 	)
 )
 
