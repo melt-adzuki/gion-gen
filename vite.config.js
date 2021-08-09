@@ -1,15 +1,18 @@
 import { loadEnv } from "vite"
 
-export default ({ command, mode }) => {
-	if (command === "serve") {
+export default ({ command, mode }) =>
+{
+	if (command === "serve")
+	{
 		return {
-			// serve specific config
+			// Serve specific config
 			server: {
 				host: loadEnv(mode, process.cwd()).VITE_SERVER_IP,
 			},
 		}
-	} else
-		return {
-			base: "/GION/",
-		}
+	}
+
+	return {
+		base: "/GION/",
+	}
 }

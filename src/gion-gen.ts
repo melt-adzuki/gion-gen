@@ -1,9 +1,10 @@
-const getRandomHiragana = (): string => {
-	const hiragana =
-		"あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
+const getRandomHiragana = (): string =>
+{
+	const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
 	return hiragana[Math.floor(Math.random() * hiragana.length)]
 }
 
-export const gionGenerator = {
-	generate: () => `${getRandomHiragana()}${getRandomHiragana()}`.repeat(2),
+export const gionGenerator =
+{
+	generate: (): string => `${getRandomHiragana()}${getRandomHiragana()}`.repeat(2),
 }
