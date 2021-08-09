@@ -1,0 +1,113 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:all"
+    ],
+    "plugins": [],
+    "parser": "espree",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.ts"
+            ],
+            "extends": [
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "plugins": [
+                "@typescript-eslint"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "project": "tsconfig.json"
+            },
+            "rules": {
+                "@typescript-eslint/no-non-null-assertion": 0
+            }
+        }
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "no-tabs": [
+            "error",
+            {
+                "allowIndentationTabs": true
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "quote-props": [
+            "error",
+            "as-needed"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "brace-style": [
+            "error",
+            "allman"
+        ],
+        "padded-blocks": [
+            "error",
+            "never"
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always",
+            {
+                "arraysInObjects": false
+            }
+        ],
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ],
+        "one-var": [
+            "error",
+            "never"
+        ],
+        "no-extra-parens": [
+            "error",
+            "all",
+            {
+                "returnAssign": false
+            }
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "curly": [
+            "error",
+            "multi-line"
+        ],
+        "array-element-newline": [
+            "error",
+            {
+                "multiline": true
+            }
+        ],
+        "max-len": 0,
+        "no-console": 0,
+        "no-magic-numbers": 0,
+        "newline-per-chained-call": 0,
+        "function-call-argument-newline": 0
+    }
+}
