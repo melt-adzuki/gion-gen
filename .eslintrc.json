@@ -36,7 +36,10 @@
     "rules": {
         "indent": [
             "error",
-            "tab"
+            "tab",
+            {
+                "ignoreComments": true
+            }
         ],
         "no-tabs": [
             "error",
@@ -102,6 +105,20 @@
             "error",
             {
                 "multiline": true
+            }
+        ],
+        "max-lines-per-function": [
+            "error",
+            {
+                "skipBlankLines": true,
+                "skipComments": true
+            }
+        ],
+        "lines-around-comment": [
+            "error",
+            {
+                "beforeLineComment": true,
+                "allowBlockStart": true
             }
         ],
         "max-len": 0,
