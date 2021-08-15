@@ -1,16 +1,18 @@
 // TODO: 促音を追加する
 
+const pickRandomCharacter = (string: string): string => string[Math.floor(Math.random() * string.length)]
+
 const getRandomHiragana = (): string =>
 {
 	const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
-	return hiragana[Math.floor(Math.random() * hiragana.length)]
+	return pickRandomCharacter(hiragana)
 }
 
 const getRandomHiraganaWithSmallCharacter = (): string =>
 {
 	const hiragana = "きしちにひみりぎじぢびぴ"
 	const smallHiragana = "ゃゅょ"
-	return `${hiragana[Math.floor(Math.random() * hiragana.length)]}${smallHiragana[Math.floor(Math.random() * smallHiragana.length)]}`
+	return `${pickRandomCharacter(hiragana)}${pickRandomCharacter(smallHiragana)}`
 }
 
 export const gionGenerator =
