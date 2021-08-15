@@ -23,9 +23,7 @@
 #content {
 	color: white;
 	text-align: center;
-	/* 64px @ 480px increasing to 96px @ 1024px */
-	font-size: clamp(64px, calc(4rem + ((1vw - 4.8px) * 5.8824)), 96px);
-	min-height: 0vw;
+	font-size: min(10vw, 96px);
 }
 
 .control {
