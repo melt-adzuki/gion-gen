@@ -1,13 +1,16 @@
+// TODO: 促音を追加する
+
 const getRandomHiragana = (): string =>
 {
 	const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
 	return hiragana[Math.floor(Math.random() * hiragana.length)]
 }
-const getRandomHiraganaSmall = (): string =>
+
+const getRandomHiraganaWithSmallCharacter = (): string =>
 {
-	// Const hiraganaSmall = "ぁぃぅぇぉゕゖっゃゅょ";
-	const hiraganaSmall = "っゃゅょ"
-	return hiraganaSmall[Math.floor(Math.random() * hiraganaSmall.length)]
+	const hiragana = "きしちにひみりぎじぢびぴ"
+	const smallHiragana = "ゃゅょ"
+	return `${hiragana[Math.floor(Math.random() * hiragana.length)]}${smallHiragana[Math.floor(Math.random() * smallHiragana.length)]}`
 }
 
 export const gionGenerator =
@@ -22,9 +25,9 @@ export const gionGenerator =
 		else if (Math.random() < 0.5)
 		{
 			// A'BA'B
-			return `${getRandomHiragana()}${getRandomHiraganaSmall()}${getRandomHiragana()}`.repeat(2)
+			return `${getRandomHiraganaWithSmallCharacter()}${getRandomHiragana()}`.repeat(2)
 		}
 		// AB'AB'
-		return `${getRandomHiragana()}${getRandomHiragana()}${getRandomHiraganaSmall()}`.repeat(2)
+		return `${getRandomHiragana()}${getRandomHiraganaWithSmallCharacter()}`.repeat(2)
 	},
 }
