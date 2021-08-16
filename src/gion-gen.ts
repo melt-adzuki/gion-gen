@@ -69,14 +69,14 @@ export const gionGenerator =
 			return `${randomHiragana[0]}っ${randomHiragana[1]}${randomHiragana[0]}${randomHiragana[1]}`
 
 		/*
-		 * [0]っ{1} [0]{1}
+		 * [0]っ{0} [0]{0}
 		 * べっちょべちょ
 		 */
 		case 4:
 			return `${randomHiragana[0]}っ${randomHiraganaWithSmallCharacter}${randomHiragana[0]}${randomHiraganaWithSmallCharacter}`
 
 		/*
-		 * NG: {0}っ[1] {0}[1]
+		 * NG: {0}っ[0] {0}[0]
 		 * ぴょっこぴょこ
 		 */
 
@@ -91,14 +91,14 @@ export const gionGenerator =
 		 */
 
 		/*
-		 * [0]{1}っ [0]{1}っ
+		 * [0]{0}っ [0]{0}っ
 		 * どぴゅっどぴゅっ
 		 */
 		case 5:
 			return `${randomHiragana[0]}${randomHiraganaWithSmallCharacter}っ`.repeat(2)
 
 		/*
-		 * NG: {0}[1]っ {0}[1]
+		 * NG: {0}[0]っ {0}[0]
 		 * ひょろっひょろ
 		 */
 
