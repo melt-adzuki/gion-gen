@@ -5,12 +5,19 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "lint": "eslint --ext .ts,vue --ignore-path .gitignore . --fix"
+    "lint": "eslint --ext .ts,vue --ignore-path .gitignore . --fix",
+    "test": "mocha --require ts-node/register --watch-extensions ts \"test/**/*.ts\""
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.6.1",
+    "chai": "^4.3.4",
     "eslint": "^7.32.0",
+    "mocha": "^9.0.3",
+    "ts-node": "^10.2.0",
     "typescript": "^4.3.2",
     "vite": "^2.4.3"
   },
