@@ -2,7 +2,7 @@ import { describe, it } from "mocha"
 import { expect } from "chai"
 import { gionGenerator } from "../src/gion-gen"
 
-const testCase = (...options: Array<[number, number]>): void => options.forEach(option =>
+const testOutputLength = (...options: Array<[number, number]>): void => options.forEach(option =>
 {
 	it(`ケース${option[0]}の文字数が${option[1]}`, () =>
 	{
@@ -27,5 +27,5 @@ describe("ジェネレーターの出力", () =>
 		}
 	})
 
-	testCase([0, 6], [1, 6], [2, 5], [3, 5], [4, 7], [5, 8])
+	testOutputLength([0, 6], [1, 6], [2, 5], [3, 5], [4, 7], [5, 8])
 })
