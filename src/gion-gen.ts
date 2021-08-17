@@ -15,7 +15,7 @@ const getRandomHiraganaWithSmallCharacter = (): string =>
 
 export const gionGenerator =
 {
-	generate: (): string =>
+	generate: (forcedCase?: number): string =>
 	{
 		const randomHiragana: Array<string> = [getRandomHiragana(), getRandomHiragana()]
 		const randomHiraganaWithSmallCharacter: string = getRandomHiraganaWithSmallCharacter()
@@ -24,7 +24,7 @@ export const gionGenerator =
 		 * 1/5の確率を生成
 		 * 0, 1, 2, 3, 4
 		 */
-		if (!(Math.floor(Math.random() * 5) === 1))
+		if (typeof forcedCase === "undefined" && !(Math.floor(Math.random() * 5) === 1))
 		{
 			/*
 			 * [0][1] [0][1]
@@ -33,7 +33,7 @@ export const gionGenerator =
 			return `${randomHiragana[0]}${randomHiragana[1]}`.repeat(2)
 		}
 
-		switch (Math.floor(Math.random() * 6))
+		switch (forcedCase ?? Math.floor(Math.random() * 6))
 		{
 		case 0:
 			/*
