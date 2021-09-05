@@ -2,18 +2,36 @@ import { describe, it } from "mocha"
 import { expect } from "chai"
 import { gionGenerator } from "../src/gion-gen"
 
-const testOutputLength = (...options: Array<[number, number]>): void => options.forEach(option =>
+interface OutputLengthTestOptions {
+	caseToTest: number,
+	expectedLength: number,
+}
+
+const testOutputLength = (...lengths: number[]): void =>
 {
-	it(`ケース${option[0]}の文字数が${option[1]}`, () =>
+	const optionsArray: OutputLengthTestOptions[] = []
+
+	lengths.forEach((length, index) =>
 	{
-		for (let i = 0; i <= 10; i++)
-		{
-			const gion = gionGenerator.generate(option[0])
-			console.log("%d: %s", i, gion)
-			expect(gion).to.be.lengthOf(option[1])
-		}
+		optionsArray.push({
+			caseToTest: index,
+			expectedLength: length,
+		})
 	})
-})
+
+	optionsArray.forEach(options =>
+	{
+		it(`ケース${options.caseToTest}の文字数が${options.expectedLength}`, () =>
+		{
+			for (let i = 0; i <= 10; i++)
+			{
+				const gion = gionGenerator.generate(options.caseToTest)
+				console.log("%d: %s", i, gion)
+				expect(gion).to.be.lengthOf(options.expectedLength)
+			}
+		})
+	})
+}
 
 describe("ジェネレーターの出力", () =>
 {
@@ -27,5 +45,5 @@ describe("ジェネレーターの出力", () =>
 		}
 	})
 
-	testOutputLength([0, 6], [1, 6], [2, 5], [3, 5], [4, 7], [5, 8])
+	testOutputLength(6, 6, 5, 5, 7, 8)
 })
