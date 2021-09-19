@@ -24,7 +24,7 @@ const Wrapper = styled(Button)<Props>`
 	`}
 `
 
-const Arrow = (props: Props): JSX.Element =>
+const Arrow: React.FC<Props> = props =>
 {
 	const dispatch = useDispatch()
 	const selector = useSelector(state => state)
