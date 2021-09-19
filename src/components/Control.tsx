@@ -26,7 +26,7 @@ const Control = (): JSX.Element =>
 				再生成
 			</Button>
 
-			<Button onClick={ () => window.open(`https://twitter.com/intent/tweet?hashtags=擬音ジェネレーター&url=https://hijiki02.github.io/GION/&text=${selector.gion}`) }>
+			<Button onClick={ () => window.open(`https://twitter.com/intent/tweet?hashtags=擬音ジェネレーター&url=https://hijiki02.github.io/GION/&text=${selector.gion[selector.index]}`) }>
 				ツイートする
 			</Button>
 
