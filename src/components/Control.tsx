@@ -1,4 +1,4 @@
-import { generateGion, useSelector } from "@/store"
+import { generateGion, resetIndex, useSelector } from "@/store"
 import Button from "./Button"
 import React from "react"
 import styled from "styled-components"
@@ -18,7 +18,11 @@ const Control = (): JSX.Element =>
 
 	return (
 		<Container>
-			<Button primary={true} onClick={ () => dispatch(generateGion()) }>
+			<Button primary={true} onClick={ () =>
+			{
+				dispatch(generateGion())
+				dispatch(resetIndex())
+			} }>
 				再生成
 			</Button>
 

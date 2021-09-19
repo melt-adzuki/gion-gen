@@ -14,7 +14,7 @@ const Result = (): JSX.Element =>
 
 	return (
 		<Wrapper>
-			{ selector.gion }
+			{ selector.gion[selector.index] }
 		</Wrapper>
 	)
 }

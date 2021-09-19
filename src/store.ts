@@ -3,11 +3,13 @@ import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { gionGenerator } from "./gion-gen"
 
 export type State = {
-    gion: string,
+	gion: string[],
+	index: number,
 }
 
 const initialState: State = {
-	gion: gionGenerator.generate(),
+	gion: [gionGenerator.generate()],
+	index: 0,
 }
 
 const slice = createSlice({
@@ -16,12 +18,24 @@ const slice = createSlice({
 	reducers: {
 		generateGion: state => ({
 			...state,
-			gion: gionGenerator.generate(),
+			gion: [gionGenerator.generate(), ...state.gion],
+		}),
+		goNext: state => ({
+			...state,
+			index: state.index - 1,
+		}),
+		goPrev: state => ({
+			...state,
+			index: state.index + 1,
+		}),
+		resetIndex: state => ({
+			...state,
+			index: 0,
 		}),
 	},
 })
 
-export const { generateGion } = slice.actions
+export const { generateGion, goNext, goPrev, resetIndex } = slice.actions
 
 export const store = configureStore({
 	reducer: slice.reducer,

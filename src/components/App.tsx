@@ -1,5 +1,6 @@
 import "modern-css-reset"
 import styled, { keyframes } from "styled-components"
+import Arrow from "./Arrow"
 import Control from "./Control"
 import React from "react"
 import Result from "./Result"
@@ -34,6 +35,10 @@ const App = (): JSX.Element =>
 {
 	return (
 		<Container>
+			<>
+				<Arrow direction="left" />
+				<Arrow direction="right" />
+			</>
 			<Result />
 			<Control />
 		</Container>
