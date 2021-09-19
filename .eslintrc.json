@@ -47,10 +47,6 @@
                 "allowIndentationTabs": true
             }
         ],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
         "quotes": [
             "error",
             "double"
@@ -76,6 +72,14 @@
             "always",
             {
                 "arraysInObjects": false
+            }
+        ],
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "never",
+                "named": "never",
+                "asyncArrow": "always"
             }
         ],
         "comma-dangle": [
@@ -118,7 +122,10 @@
             "error",
             {
                 "beforeLineComment": true,
-                "allowBlockStart": true
+                "allowBlockStart": true,
+                "allowClassStart": true,
+                "allowObjectStart": true,
+                "allowArrayStart": true
             }
         ],
         "id-length": [
@@ -129,8 +136,11 @@
         ],
         "max-len": 0,
         "no-console": 0,
+        "no-ternary": 0,
         "no-plusplus": 0,
+        "linebreak-style": 0,
         "no-magic-numbers": 0,
+        "multiline-ternary": 0,
         "no-warning-comments": 0,
         "newline-per-chained-call": 0,
         "function-call-argument-newline": 0
