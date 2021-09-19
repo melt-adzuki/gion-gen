@@ -1,6 +1,7 @@
 import { goNext, goPrev, useSelector } from "@/store"
 import Button from "./Button"
 import React from "react"
+import media from "styled-media-query"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
 
@@ -8,14 +9,19 @@ type Props = {
     direction: "left" | "right"
 }
 
+const padding = "64px"
+
 const Wrapper = styled(Button)<Props>`
     width: 64px;
     height: 64px;
     position: absolute;
     ${props => props.direction === "left"
-		? "left: 64px"
-		: "right: 64px"
-}
+		? `left: ${padding}`
+		: `right: ${padding}`
+};
+	${media.lessThan("large")`
+		bottom: ${padding};
+	`}
 `
 
 const Arrow = (props: Props): JSX.Element =>
