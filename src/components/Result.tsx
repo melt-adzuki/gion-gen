@@ -1,7 +1,6 @@
-import { IGionState } from "@/types"
 import React from "react"
 import styled from "styled-components"
-import { useSelector } from "react-redux"
+import { useSelector } from "@/store"
 
 const Wrapper = styled.div`
 	color: white;
@@ -11,11 +10,11 @@ const Wrapper = styled.div`
 
 const Result = (): JSX.Element =>
 {
-	const selector = useSelector((state: IGionState) => state)
+	const selector = useSelector(state => state)
 
 	return (
 		<Wrapper>
-			{selector.gion.content}
+			{ selector.gion }
 		</Wrapper>
 	)
 }

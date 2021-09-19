@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from "react-redux"
+import { generateGion, useSelector } from "@/store"
 import Button from "./Button"
-import { IGionState } from "@/types"
 import React from "react"
-import { gionGenerationAction } from "@/reducks/gionGeneration/actions"
 import styled from "styled-components"
+import { useDispatch } from "react-redux"
 
 const Container = styled.div`
 	display: flex;
@@ -15,15 +14,15 @@ const Container = styled.div`
 const Control = (): JSX.Element =>
 {
 	const dispatch = useDispatch()
-	const selector = useSelector((state: IGionState) => state)
+	const selector = useSelector(state => state)
 
 	return (
 		<Container>
-			<Button primary={true} onClick={ () => dispatch(gionGenerationAction()) }>
+			<Button primary={true} onClick={ () => dispatch(generateGion()) }>
 				再生成
 			</Button>
 
-			<Button onClick={ () => window.open(`https://twitter.com/intent/tweet?hashtags=擬音ジェネレーター&url=https://hijiki02.github.io/GION/&text=${selector.gion.content}`) }>
+			<Button onClick={ () => window.open(`https://twitter.com/intent/tweet?hashtags=擬音ジェネレーター&url=https://hijiki02.github.io/GION/&text=${selector.gion}`) }>
 				ツイートする
 			</Button>
 
