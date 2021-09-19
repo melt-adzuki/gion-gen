@@ -33,7 +33,7 @@ const Arrow = (props: Props): JSX.Element =>
 	{
 		return (
 			<Wrapper
-				direction={ "left" }
+				direction="left"
 				onClick={ () => dispatch(goPrev()) }
 			>
 				{ "<" }
@@ -45,7 +45,7 @@ const Arrow = (props: Props): JSX.Element =>
 	{
 		return (
 			<Wrapper
-				direction={ "right" }
+				direction="right"
 				onClick={ () => dispatch(goNext()) }
 			>
 				{ ">" }
