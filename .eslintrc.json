@@ -5,18 +5,32 @@
         "es2021": true,
         "node": true
     },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "extends": [
-        "eslint:all"
+        "eslint:all",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
     ],
-    "plugins": [],
+    "plugins": [
+        "react-hooks",
+        "react"
+    ],
     "parser": "espree",
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "overrides": [
         {
             "files": [
-                "**/*.ts"
+                "**/*.ts",
+                "**/*.tsx"
             ],
             "extends": [
                 "plugin:@typescript-eslint/recommended"
@@ -29,6 +43,7 @@
                 "project": "tsconfig.eslint.json"
             },
             "rules": {
+                "@typescript-eslint/no-use-before-define": "error",
                 "@typescript-eslint/no-non-null-assertion": 0
             }
         }
@@ -140,8 +155,10 @@
         "no-plusplus": 0,
         "linebreak-style": 0,
         "no-magic-numbers": 0,
+        "arrow-body-style": 0,
         "multiline-ternary": 0,
         "no-warning-comments": 0,
+        "no-use-before-define": 0,
         "newline-per-chained-call": 0,
         "function-call-argument-newline": 0
     }
