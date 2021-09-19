@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "target": "ESNext",
     "module": "commonjs",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "strict": true,
     "sourceMap": true,
     "resolveJsonModule": true,
