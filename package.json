@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "lint": "eslint --ext .ts,vue --ignore-path .gitignore . --fix",
+    "lint": "eslint --ext .js,.ts,.jsx,.tsx --ignore-path .gitignore . --fix",
     "test": "mocha --require ts-node/register --watch-extensions ts \"test/**/*.ts\""
   },
   "devDependencies": {
