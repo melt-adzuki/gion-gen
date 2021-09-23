@@ -89,6 +89,12 @@
                 "arraysInObjects": false
             }
         ],
+        "object-property-newline": [
+            "error",
+            {
+                "allowAllPropertiesOnSameLine": true
+            }
+        ],
         "space-before-function-paren": [
             "error",
             {
