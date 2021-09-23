@@ -62,7 +62,7 @@ const Title = styled.p`
 
     &::after {
         content: "";
-        background-image: url("/open-outline.svg");
+        background-image: url("./open-outline.svg");
         width: 24px;
         height: 24px;
         margin: auto 8px;
