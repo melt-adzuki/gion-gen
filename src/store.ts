@@ -1,6 +1,10 @@
 import { TypedUseSelectorHook, useSelector as nativeUseSelector } from "react-redux"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import GionGenerator from "@/gion-gen"
+import qs from "qs"
+
+const params = qs.parse(location.search, { ignoreQueryPrefix: true })
+const forcedResult = params.display?.toString()
 
 export type State = {
 	gion: GionGenerator[],
@@ -8,7 +12,7 @@ export type State = {
 }
 
 const initialState: State = {
-	gion: [new GionGenerator().generate()],
+	gion: [new GionGenerator().generate(forcedResult)],
 	index: 0,
 }
 
