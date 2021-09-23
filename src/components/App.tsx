@@ -43,11 +43,11 @@ const App = (): JSX.Element =>
 			<>
 				{
 					!(typeof selector.gion[selector.index + 1] === "undefined") &&
-					<Arrow direction="left" onClick={ () => dispatch(goPrev()) } />
+						<Arrow direction="left" onClick={ () => dispatch(goPrev()) } />
 				}
 				{
 					!(typeof selector.gion[selector.index - 1] === "undefined") &&
-					<Arrow direction="right" onClick={ () => dispatch(goNext()) } />
+						<Arrow direction="right" onClick={ () => dispatch(goNext()) } />
 				}
 			</>
 			<Result />
