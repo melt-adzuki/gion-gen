@@ -1,11 +1,9 @@
-import { goNext, goPrev, useSelector } from "@/store"
+import React, { PropsWithoutRef } from "react"
 import Button from "./Button"
-import React from "react"
 import media from "styled-media-query"
 import styled from "styled-components"
-import { useDispatch } from "react-redux"
 
-type Props = {
+type Props = PropsWithoutRef<JSX.IntrinsicElements["button"]> & {
     direction: "left" | "right"
 }
 
@@ -26,28 +24,19 @@ const Wrapper = styled(Button)<Props>`
 
 const Arrow: React.FC<Props> = props =>
 {
-	const dispatch = useDispatch()
-	const selector = useSelector(state => state)
-
-	if (props.direction === "left" && !(typeof selector.gion[selector.index + 1] === "undefined"))
+	if (props.direction === "left")
 	{
 		return (
-			<Wrapper
-				direction="left"
-				onClick={ () => dispatch(goPrev()) }
-			>
+			<Wrapper direction="left" onClick={ props.onClick }>
 				{ "<" }
 			</Wrapper>
 		)
 	}
 
-	if (props.direction === "right" && !(typeof selector.gion[selector.index - 1] === "undefined"))
+	if (props.direction === "right")
 	{
 		return (
-			<Wrapper
-				direction="right"
-				onClick={ () => dispatch(goNext()) }
-			>
+			<Wrapper direction="right" onClick={ props.onClick }>
 				{ ">" }
 			</Wrapper>
 		)
