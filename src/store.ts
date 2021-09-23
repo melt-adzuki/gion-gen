@@ -1,14 +1,14 @@
 import { TypedUseSelectorHook, useSelector as nativeUseSelector } from "react-redux"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
-import { gionGenerator } from "./gion-gen"
+import GionGenerator from "@/gion-gen"
 
 export type State = {
-	gion: string[],
+	gion: GionGenerator[],
 	index: number,
 }
 
 const initialState: State = {
-	gion: [gionGenerator.generate()],
+	gion: [new GionGenerator().generate()],
 	index: 0,
 }
 
@@ -18,7 +18,7 @@ const slice = createSlice({
 	reducers: {
 		generateGion: state => ({
 			...state,
-			gion: [gionGenerator.generate(), ...state.gion],
+			gion: [new GionGenerator().generate(), ...state.gion],
 			index: 0,
 		}),
 		goNext: state => ({

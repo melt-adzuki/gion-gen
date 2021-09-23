@@ -5,6 +5,7 @@ import Arrow from "./Arrow"
 import Control from "./Control"
 import React from "react"
 import Result from "./Result"
+import UserMatch from "./Card/UserMatch"
 import { useDispatch } from "react-redux"
 
 const gradient = keyframes`
@@ -38,6 +39,8 @@ const App = (): JSX.Element =>
 	const dispatch = useDispatch()
 	const selector = useSelector(state => state)
 
+	const userMatch = selector.gion[selector.index].getSpecialWord("UserMatch")
+
 	return (
 		<Container>
 			<>
@@ -50,6 +53,10 @@ const App = (): JSX.Element =>
 						<Arrow direction="right" onClick={ () => dispatch(goNext()) } />
 				}
 			</>
+			{
+				userMatch &&
+					<UserMatch username={ userMatch.username } description={ userMatch.description } />
+			}
 			<Result />
 			<Control />
 		</Container>

@@ -1,3 +1,5 @@
+import { TwitterUser, twitterUserList } from "./special-word-list"
+
 const pickRandomCharacter = (string: string): string => string[Math.floor(Math.random() * string.length)]
 
 const getRandomHiragana = (): string =>
@@ -13,41 +15,49 @@ const getRandomHiraganaWithSmallCharacter = (): string =>
 	return `${pickRandomCharacter(hiragana)}${pickRandomCharacter(smallHiragana)}`
 }
 
-export const gionGenerator =
+export default class GionGenerator
 {
-	generate: (forcedCase?: number): string =>
+	result = ""
+
+	generate(forcedResult?: string, forcedCase?: number): this
 	{
 		const randomHiragana: Array<string> = [getRandomHiragana(), getRandomHiragana()]
 		const randomHiraganaWithSmallCharacter: string = getRandomHiraganaWithSmallCharacter()
+
+		if (!(typeof forcedResult === "undefined")) this.result = forcedResult
 
 		/*
 		 * 1/5の確率を生成
 		 * 0, 1, 2, 3, 4
 		 */
-		if (typeof forcedCase === "undefined" && !(Math.floor(Math.random() * 5) === 1))
+		else if (typeof forcedCase === "undefined" && !(Math.floor(Math.random() * 5) === 1))
 		{
 			/*
 			 * [0][1] [0][1]
 			 * てくてく
 			 */
-			return `${randomHiragana[0]}${randomHiragana[1]}`.repeat(2)
+			this.result = `${randomHiragana[0]}${randomHiragana[1]}`.repeat(2)
 		}
 
-		switch (forcedCase ?? Math.floor(Math.random() * 6))
+		else
 		{
-		case 0:
+			switch (forcedCase ?? Math.floor(Math.random() * 6))
+			{
+			case 0:
 			/*
 			 * {0}[0] {0}[0]
 			 * しゅるしゅる
 			 */
-			return `${randomHiraganaWithSmallCharacter}${randomHiragana[0]}`.repeat(2)
+				this.result = `${randomHiraganaWithSmallCharacter}${randomHiragana[0]}`.repeat(2)
+				break
 
-		case 1:
+			case 1:
 			/*
 			 * [0]{0} [0]{0}
 			 * がちゃがちゃ
 			 */
-			return `${randomHiragana[0]}${randomHiraganaWithSmallCharacter}`.repeat(2)
+				this.result = `${randomHiragana[0]}${randomHiraganaWithSmallCharacter}`.repeat(2)
+				break
 
 		/*
 		 * NG: [0]っ [0]
@@ -58,22 +68,25 @@ export const gionGenerator =
 		 * {0}っ {0}
 		 * きゅっきゅ
 		 */
-		case 2:
-			return `${randomHiraganaWithSmallCharacter}っ${randomHiraganaWithSmallCharacter}`
+			case 2:
+				this.result = `${randomHiraganaWithSmallCharacter}っ${randomHiraganaWithSmallCharacter}`
+				break
 
 		/*
 		 * [0]っ[1] [0][1]
 		 * ぎっとぎと
 		 */
-		case 3:
-			return `${randomHiragana[0]}っ${randomHiragana[1]}${randomHiragana[0]}${randomHiragana[1]}`
+			case 3:
+				this.result = `${randomHiragana[0]}っ${randomHiragana[1]}${randomHiragana[0]}${randomHiragana[1]}`
+				break
 
 		/*
 		 * [0]っ{0} [0]{0}
 		 * べっちょべちょ
 		 */
-		case 4:
-			return `${randomHiragana[0]}っ${randomHiraganaWithSmallCharacter}${randomHiragana[0]}${randomHiraganaWithSmallCharacter}`
+			case 4:
+				this.result = `${randomHiragana[0]}っ${randomHiraganaWithSmallCharacter}${randomHiragana[0]}${randomHiraganaWithSmallCharacter}`
+				break
 
 		/*
 		 * NG: {0}っ[0] {0}[0]
@@ -94,8 +107,9 @@ export const gionGenerator =
 		 * [0]{0}っ [0]{0}っ
 		 * どぴゅっどぴゅっ
 		 */
-		case 5:
-			return `${randomHiragana[0]}${randomHiraganaWithSmallCharacter}っ`.repeat(2)
+			case 5:
+				this.result = `${randomHiragana[0]}${randomHiraganaWithSmallCharacter}っ`.repeat(2)
+				break
 
 		/*
 		 * NG: {0}[0]っ {0}[0]
@@ -107,8 +121,22 @@ export const gionGenerator =
 		 * にょぎゃっにょぎゃ
 		 */
 
-		default:
-			return ""
+			default:
+				throw new Error("Unexpected value")
+			}
 		}
-	},
+
+		return this
+	}
+
+	getSpecialWord(category: "UserMatch"): TwitterUser | void
+	{
+		switch (category)
+		{
+		case "UserMatch":
+			return twitterUserList.get(this.result)
+		default:
+			throw new Error("Invalid category")
+		}
+	}
 }
