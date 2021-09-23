@@ -19,6 +19,7 @@ const slice = createSlice({
 		generateGion: state => ({
 			...state,
 			gion: [gionGenerator.generate(), ...state.gion],
+			index: 0,
 		}),
 		goNext: state => ({
 			...state,
@@ -28,14 +29,10 @@ const slice = createSlice({
 			...state,
 			index: state.index + 1,
 		}),
-		resetIndex: state => ({
-			...state,
-			index: 0,
-		}),
 	},
 })
 
-export const { generateGion, goNext, goPrev, resetIndex } = slice.actions
+export const { generateGion, goNext, goPrev } = slice.actions
 
 export const store = configureStore({
 	reducer: slice.reducer,
