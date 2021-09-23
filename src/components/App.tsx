@@ -42,11 +42,11 @@ const App = (): JSX.Element =>
 		<Container>
 			<>
 				{
-					!(typeof selector.gion[selector.index + 1] === "undefined") &&
+					selector.gion[selector.index + 1] &&
 						<Arrow direction="left" onClick={ () => dispatch(goPrev()) } />
 				}
 				{
-					!(typeof selector.gion[selector.index - 1] === "undefined") &&
+					selector.gion[selector.index - 1] &&
 						<Arrow direction="right" onClick={ () => dispatch(goNext()) } />
 				}
 			</>
