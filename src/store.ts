@@ -35,6 +35,9 @@ const slice = createSlice({
 export const { generateGion, goNext, goPrev } = slice.actions
 
 export const store = configureStore({
+	middleware: getDefaultMiddleware => getDefaultMiddleware({
+		serializableCheck: false,
+	}),
 	reducer: slice.reducer,
 })
 
