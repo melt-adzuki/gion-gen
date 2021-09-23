@@ -20,15 +20,16 @@ const specificOptions = ({ command, mode }) =>
 	}
 }
 
-export default ({ command, mode }) => ({ ...specificOptions({ command,
-	mode }),
-...{
-	resolve: {
-		alias: [
-			{
-				find: "@",
-				replacement: path.resolve(__dirname, "src"),
-			},
-		],
-	},
-} })
+export default ({ command, mode }) => (
+	{
+		...specificOptions({ command, mode }),
+		resolve: {
+			alias: [
+				{
+					find: "@",
+					replacement: path.resolve(__dirname, "src"),
+				},
+			],
+		},
+	}
+)
