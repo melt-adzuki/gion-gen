@@ -39,7 +39,7 @@ const App = (): JSX.Element =>
 	const dispatch = useDispatch()
 	const selector = useSelector(state => state)
 
-	const userMatch = selector.gion[selector.index].getSpecialWord("UserMatch")
+	const specialWord = selector.gion[selector.index].getSpecialWord()
 
 	return (
 		<Container>
@@ -54,8 +54,8 @@ const App = (): JSX.Element =>
 				}
 			</>
 			{
-				userMatch &&
-					<UserMatch username={ userMatch.username } description={ userMatch.description } />
+				specialWord?.category === "UserMatch" &&
+					<UserMatch username={ specialWord.title } description={ specialWord.description } />
 			}
 			<Result />
 			<Control />

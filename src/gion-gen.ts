@@ -1,4 +1,4 @@
-import { TwitterUser, twitterUserList } from "./special-word-list"
+import { SpecialWord, specialWordList } from "./special-word-list"
 
 const pickRandomCharacter = (string: string): string => string[Math.floor(Math.random() * string.length)]
 
@@ -129,14 +129,8 @@ export default class GionGenerator
 		return this
 	}
 
-	getSpecialWord(category: "UserMatch"): TwitterUser | void
+	getSpecialWord(): SpecialWord | undefined
 	{
-		switch (category)
-		{
-		case "UserMatch":
-			return twitterUserList.get(this.result)
-		default:
-			throw new Error("Invalid category")
-		}
+		return specialWordList.get(this.result)
 	}
 }
