@@ -82,6 +82,10 @@
             "error",
             "never"
         ],
+        "dot-location": [
+            "error",
+            "property"
+        ],
         "object-curly-spacing": [
             "error",
             "always",
@@ -102,6 +106,10 @@
                 "named": "never",
                 "asyncArrow": "always"
             }
+        ],
+        "function-paren-newline": [
+            "error",
+            "multiline-arguments"
         ],
         "comma-dangle": [
             "error",
