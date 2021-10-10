@@ -5,8 +5,8 @@ import styled from "styled-components"
 
 type Props = {
     category: string,
-    iconPath: string,
-    link: string,
+    iconPath?: string,
+    link: `${"http" | "https"}://${string}`,
     title: string,
     description: string,
 }
@@ -84,7 +84,7 @@ const Base: React.FC<Props> = props =>
 				<Category>{ props.category }</Category>
 			</Header>
 			<Body>
-				<Icon src={ props.iconPath } />
+				{ props.iconPath && <Icon src={ props.iconPath } /> }
 				<Content>
 					<Title>{ props.title }</Title>
 					<Description>{ props.description }</Description>

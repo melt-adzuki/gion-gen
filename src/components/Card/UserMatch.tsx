@@ -1,12 +1,8 @@
 import Base from "./Base"
+import { PropsOf } from "@/special-word"
 import React from "react"
 
-type Props = {
-    username: string,
-    description: string,
-}
-
-const UserMatch: React.FC<Props> = props =>
+const UserMatch: React.FC<PropsOf<"UserMatch">> = props =>
 {
 	return (
 		<Base

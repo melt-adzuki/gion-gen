@@ -1,4 +1,4 @@
-import { SpecialWord, specialWordList } from "./special-word-list"
+import { SpecialWord, specialWordList } from "./special-word"
 
 const pickRandomCharacter = (string: string): string => string[Math.floor(Math.random() * string.length)]
 

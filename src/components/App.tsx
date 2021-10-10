@@ -2,10 +2,10 @@ import "modern-css-reset"
 import { goNext, goPrev, useSelector } from "@/store"
 import styled, { keyframes } from "styled-components"
 import Arrow from "./Arrow"
+import Card from "./Card"
 import Control from "./Control"
 import React from "react"
 import Result from "./Result"
-import UserMatch from "./Card/UserMatch"
 import { useDispatch } from "react-redux"
 
 const gradient = keyframes`
@@ -39,8 +39,6 @@ const App = (): JSX.Element =>
 	const dispatch = useDispatch()
 	const selector = useSelector(state => state)
 
-	const specialWord = selector.gion[selector.index].getSpecialWord()
-
 	return (
 		<Container>
 			<>
@@ -53,10 +51,7 @@ const App = (): JSX.Element =>
 						<Arrow direction="right" onClick={ () => dispatch(goNext()) } />
 				}
 			</>
-			{
-				specialWord?.category === "UserMatch" &&
-					<UserMatch username={ specialWord.title } description={ specialWord.description } />
-			}
+			<Card />
 			<Result />
 			<Control />
 		</Container>
