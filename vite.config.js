@@ -1,5 +1,6 @@
 import { loadEnv } from "vite"
 import path from "path"
+import react from "@vitejs/plugin-react"
 
 const specificOptions = ({ command, mode }) =>
 {
@@ -23,6 +24,7 @@ const specificOptions = ({ command, mode }) =>
 export default ({ command, mode }) => (
 	{
 		...specificOptions({ command, mode }),
+		plugins: [react()],
 		resolve: {
 			alias: [
 				{
