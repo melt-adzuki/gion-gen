@@ -46,7 +46,7 @@ const Icon = styled.img`
         width: 64px;
         height: 64px;
     `}
-    border-radius: 100%;
+    border-radius: 50%;
 `
 
 const Content = styled.div`
