@@ -13,6 +13,7 @@
     "extends": [
         "eslint:all",
         "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended"
     ],
     "plugins": [
