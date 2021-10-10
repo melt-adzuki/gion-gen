@@ -24,27 +24,25 @@ const Wrapper = styled(Button)<Props>`
 
 const Arrow: React.FC<Props> = props =>
 {
-	if (props.direction === "left")
+	switch (props.direction)
 	{
+	case "left":
 		return (
-			<Wrapper direction="left" onClick={ props.onClick }>
-				{ "<" }
+			<Wrapper direction="left" onClick={props.onClick}>
+				{"<"}
 			</Wrapper>
 		)
-	}
 
-	if (props.direction === "right")
-	{
+	case "right":
 		return (
-			<Wrapper direction="right" onClick={ props.onClick }>
-				{ ">" }
+			<Wrapper direction="right" onClick={props.onClick}>
+				{">"}
 			</Wrapper>
 		)
-	}
 
-	return (
-		<></>
-	)
+	default:
+		return <></>
+	}
 }
 
 export default Arrow
