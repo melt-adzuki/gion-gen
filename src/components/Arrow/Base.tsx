@@ -1,5 +1,5 @@
 import React, { PropsWithoutRef } from "react"
-import Button from "./Button"
+import Button from "../Button"
 import media from "styled-media-query"
 import styled from "styled-components"
 
@@ -22,21 +22,21 @@ const Wrapper = styled(Button)<Props>`
 	`}
 `
 
-const Arrow: React.FC<Props> = props =>
+const Base: React.FC<Props> = props =>
 {
 	switch (props.direction)
 	{
 	case "left":
 		return (
-			<Wrapper direction="left" onClick={props.onClick}>
-				{"<"}
+			<Wrapper direction="left" onClick={ props.onClick }>
+				{ "<" }
 			</Wrapper>
 		)
 
 	case "right":
 		return (
-			<Wrapper direction="right" onClick={props.onClick}>
-				{">"}
+			<Wrapper direction="right" onClick={ props.onClick }>
+				{ ">" }
 			</Wrapper>
 		)
 
@@ -45,4 +45,4 @@ const Arrow: React.FC<Props> = props =>
 	}
 }
 
-export default Arrow
+export default Base

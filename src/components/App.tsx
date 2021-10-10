@@ -1,12 +1,10 @@
 import "modern-css-reset"
-import { goNext, goPrev, useSelector } from "@/store"
 import styled, { keyframes } from "styled-components"
 import Arrow from "./Arrow"
 import Card from "./Card"
 import Control from "./Control"
 import React from "react"
 import Result from "./Result"
-import { useDispatch } from "react-redux"
 
 const gradient = keyframes`
 	0% {
@@ -36,21 +34,9 @@ const Container = styled.section`
 
 const App = (): JSX.Element =>
 {
-	const dispatch = useDispatch()
-	const selector = useSelector(state => state)
-
 	return (
 		<Container>
-			<>
-				{
-					selector.gion[selector.index + 1] &&
-						<Arrow direction="left" onClick={ () => dispatch(goPrev()) } />
-				}
-				{
-					selector.gion[selector.index - 1] &&
-						<Arrow direction="right" onClick={ () => dispatch(goNext()) } />
-				}
-			</>
+			<Arrow />
 			<Card />
 			<Result />
 			<Control />
