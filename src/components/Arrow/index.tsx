@@ -1,6 +1,5 @@
 import { goNext, goPrev, useSelector } from "@/store"
 import Base from "./Base"
-import React from "react"
 import { useDispatch } from "react-redux"
 
 const Arrow = (): JSX.Element =>

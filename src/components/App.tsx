@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components"
 import Arrow from "./Arrow"
 import Card from "./Card"
 import Control from "./Control"
-import React from "react"
 import Result from "./Result"
 
 const gradient = keyframes`
