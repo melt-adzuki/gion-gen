@@ -41,6 +41,7 @@
     "styled-media-query": "^2.1.2"
   },
   "resolutions": {
+    "@types/react": "^17.0.27",
     "styled-components": "^5"
   }
 }
