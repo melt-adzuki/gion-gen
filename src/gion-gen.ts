@@ -17,12 +17,12 @@ const getRandomHiraganaWithSmallCharacter = (): string =>
 
 export default class GionGenerator
 {
-	result = ""
+	public result = ""
 
 	generate(forcedResult?: string, forcedCase?: number): this
 	{
-		const randomHiragana: Array<string> = [getRandomHiragana(), getRandomHiragana()]
-		const randomHiraganaWithSmallCharacter: string = getRandomHiraganaWithSmallCharacter()
+		const randomHiragana = [...Array(2)].map(() => getRandomHiragana())
+		const randomHiraganaWithSmallCharacter = getRandomHiraganaWithSmallCharacter()
 
 		if (!(typeof forcedResult === "undefined")) this.result = forcedResult
 
