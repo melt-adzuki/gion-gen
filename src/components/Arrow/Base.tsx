@@ -20,6 +20,14 @@ const Wrapper = styled(Button)<Props>`
 	${media.lessThan("large")`
 		bottom: ${padding};
 	`}
+	&::before {
+		content: "";
+		display: flex;
+		margin: auto;
+		width: 24px;
+		height: 24px;
+		background-image: url(${props => props.direction === "left" ? "./arrow-back-outline.svg" : "./arrow-forward-outline.svg"});
+	}
 `
 
 const Base: React.FC<Props> = props =>
@@ -27,18 +35,10 @@ const Base: React.FC<Props> = props =>
 	switch (props.direction)
 	{
 	case "left":
-		return (
-			<Wrapper direction="left" onClick={ props.onClick }>
-				{ "<" }
-			</Wrapper>
-		)
+		return <Wrapper direction="left" onClick={ props.onClick } />
 
 	case "right":
-		return (
-			<Wrapper direction="right" onClick={ props.onClick }>
-				{ ">" }
-			</Wrapper>
-		)
+		return <Wrapper direction="right" onClick={ props.onClick } />
 
 	default:
 		return <></>
