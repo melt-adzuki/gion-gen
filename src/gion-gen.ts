@@ -1,42 +1,51 @@
 import { SpecialWord, specialWordList } from "./special-word"
 
-const pickRandomCharacter = (string: string): string => string[Math.floor(Math.random() * string.length)]
 
-const getRandomHiragana = (): string =>
-{
-	const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
-	return pickRandomCharacter(hiragana)
-}
+const Utils = {
+	getRandomHiragana(): string
+	{
+		const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
+		return this.pickRandomCharacter(hiragana)
+	},
 
-const getRandomHiraganaWithSmallCharacter = (): string =>
-{
-	const hiragana = "きしちにひみりぎじぢびぴ"
-	const smallHiragana = "ゃゅょ"
-	return `${pickRandomCharacter(hiragana)}${pickRandomCharacter(smallHiragana)}`
-}
+	getRandomHiraganaWithSmallCharacter(): string
+	{
+		const hiragana = "きしちにひみりぎじぢびぴ"
+		const smallHiragana = "ゃゅょ"
+		return `${this.pickRandomCharacter(hiragana)}${this.pickRandomCharacter(smallHiragana)}`
+	},
+
+	pickRandomCharacter(string: string): string
+	{
+		return string[Math.floor(Math.random() * string.length)]
+	},
+} as const
+
 
 export default class GionGenerator
 {
 	public result = ""
 
-	generate(forcedResult?: string, forcedCase?: number): this
+	public generate(forcedResult?: string, forcedCase?: number): this
 	{
-		const randomHiragana = [...Array(2)].map(() => getRandomHiragana())
-		const randomHiraganaWithSmallCharacter = getRandomHiraganaWithSmallCharacter()
+		const extracted = {
+			hiragana: [Utils.getRandomHiragana(), Utils.getRandomHiragana()],
+			hiraganaWithSmallCharacter: [Utils.getRandomHiraganaWithSmallCharacter()],
+		} as const
 
-		if (!(typeof forcedResult === "undefined")) this.result = forcedResult
+		if (forcedResult) this.result = forcedResult
 
 		/*
 		 * 1/5の確率を生成
 		 * 0, 1, 2, 3, 4
 		 */
-		else if (typeof forcedCase === "undefined" && !(Math.floor(Math.random() * 5) === 1))
+		else if (typeof forcedCase === "undefined" && !(Math.floor(Math.random() * 5) === 0))
 		{
 			/*
 			 * [0][1] [0][1]
 			 * てくてく
 			 */
-			this.result = `${randomHiragana[0]}${randomHiragana[1]}`.repeat(2)
+			this.result = `${extracted.hiragana[0]}${extracted.hiragana[1]}`.repeat(2)
 		}
 
 		else
@@ -48,7 +57,7 @@ export default class GionGenerator
 			 * {0}[0] {0}[0]
 			 * しゅるしゅる
 			 */
-				this.result = `${randomHiraganaWithSmallCharacter}${randomHiragana[0]}`.repeat(2)
+				this.result = `${extracted.hiraganaWithSmallCharacter[0]}${extracted.hiragana[0]}`.repeat(2)
 				break
 
 			case 1:
@@ -56,7 +65,7 @@ export default class GionGenerator
 			 * [0]{0} [0]{0}
 			 * がちゃがちゃ
 			 */
-				this.result = `${randomHiragana[0]}${randomHiraganaWithSmallCharacter}`.repeat(2)
+				this.result = `${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}`.repeat(2)
 				break
 
 		/*
@@ -69,7 +78,7 @@ export default class GionGenerator
 		 * きゅっきゅ
 		 */
 			case 2:
-				this.result = `${randomHiraganaWithSmallCharacter}っ${randomHiraganaWithSmallCharacter}`
+				this.result = `${extracted.hiraganaWithSmallCharacter[0]}っ${extracted.hiraganaWithSmallCharacter[0]}`
 				break
 
 		/*
@@ -77,7 +86,7 @@ export default class GionGenerator
 		 * ぎっとぎと
 		 */
 			case 3:
-				this.result = `${randomHiragana[0]}っ${randomHiragana[1]}${randomHiragana[0]}${randomHiragana[1]}`
+				this.result = `${extracted.hiragana[0]}っ${extracted.hiragana[1]}${extracted.hiragana[0]}${extracted.hiragana[1]}`
 				break
 
 		/*
@@ -85,7 +94,7 @@ export default class GionGenerator
 		 * べっちょべちょ
 		 */
 			case 4:
-				this.result = `${randomHiragana[0]}っ${randomHiraganaWithSmallCharacter}${randomHiragana[0]}${randomHiraganaWithSmallCharacter}`
+				this.result = `${extracted.hiragana[0]}っ${extracted.hiraganaWithSmallCharacter[0]}${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}`
 				break
 
 		/*
@@ -108,7 +117,7 @@ export default class GionGenerator
 		 * どぴゅっどぴゅっ
 		 */
 			case 5:
-				this.result = `${randomHiragana[0]}${randomHiraganaWithSmallCharacter}っ`.repeat(2)
+				this.result = `${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}っ`.repeat(2)
 				break
 
 		/*
@@ -129,7 +138,7 @@ export default class GionGenerator
 		return this
 	}
 
-	getSpecialWord(): SpecialWord | undefined
+	public getSpecialWord(): SpecialWord | undefined
 	{
 		return specialWordList.get(this.result)
 	}
