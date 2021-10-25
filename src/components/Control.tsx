@@ -1,7 +1,7 @@
 import { generateGion, useSelector } from "@/store"
 import Button from "./Button"
 import styled from "styled-components"
-import useDispatch from "react-redux"
+import { useDispatch } from "react-redux"
 
 const Container = styled.div`
 	display: flex;
@@ -28,7 +28,7 @@ const Control = (): JSX.Element =>
 				再生成
 			</Button>
 
-			<Button onClick={() => window.open(`https://twitter.com/intent/tweet?hashtags=擬音ジェネレーター&url=https://hijiki02.github.io/GION/?display=${fixedEncodeURIComponent(result)}&text=${result}`)}>
+			<Button onClick={() => window.open(`https://twitter.com/intent/tweet?hashtags=擬音ジェネレーター&url=https://hijiki02.github.io/GION?display=${fixedEncodeURIComponent(result)}&text=${result}`)}>
 				ツイートする
 			</Button>
 
