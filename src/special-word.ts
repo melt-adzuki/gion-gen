@@ -21,6 +21,14 @@ export const specialWordList = new Map<string, SpecialWord>([
 		},
 	],
 	[
+		"これこれ",
+		{
+			category: "UserMatch",
+			description: "ニコニコ生放送をはじめ、多くの場所で活動している配信者。",
+			username: "korekore19",
+		},
+	],
+	[
 		"わしわし",
 		{
 			category: "Implicate",
