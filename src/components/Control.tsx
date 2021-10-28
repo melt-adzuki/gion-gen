@@ -14,7 +14,7 @@ const Control = (): JSX.Element =>
 {
 	const dispatch = useDispatch()
 	const selector = useSelector(state => state)
-	const fixedEncodeURIComponent = str =>
+	const fixedEncodeURIComponent = (str: string) =>
 	{
 		return encodeURIComponent(str).replace(/[!'()*]/ug, chr =>
 		{
