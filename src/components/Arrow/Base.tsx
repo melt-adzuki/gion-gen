@@ -32,17 +32,7 @@ const Wrapper = styled(Button)<Props>`
 
 const Base: React.FC<Props> = props =>
 {
-	switch (props.direction)
-	{
-	case "left":
-		return <Wrapper direction="left" onClick={ props.onClick } />
-
-	case "right":
-		return <Wrapper direction="right" onClick={ props.onClick } />
-
-	default:
-		return <></>
-	}
+	return <Wrapper direction={ props.direction } onClick={ props.onClick } />
 }
 
 export default Base
