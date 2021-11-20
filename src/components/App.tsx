@@ -12,7 +12,7 @@ class App extends React.Component
 {
 	private granimInstance!: Granim
 
-	private Container = styled.section`
+	private readonly Container = styled.section`
 		font-family: "RocknRoll One", sans-serif;
 		width: 100vw;
 		height: 100vh;
@@ -23,7 +23,7 @@ class App extends React.Component
 		gap: 32px;
 	`
 
-	private GranimCanvas = styled.canvas`
+	private readonly GranimCanvas = styled.canvas`
 		position: absolute;
 		width: 100%;
 		height: 100%;
