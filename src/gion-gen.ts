@@ -1,26 +1,24 @@
 import { SpecialWord, specialWordList } from "./special-word"
 
+namespace Utils {
+	const pickRandomCharacter = (string: string): string =>
+	{
+		return string[Math.floor(Math.random() * string.length)]
+	}
 
-const Utils = {
-	getRandomHiragana(): string
+	export const getRandomHiragana = (): string =>
 	{
 		const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
-		return this.pickRandomCharacter(hiragana)
-	},
+		return pickRandomCharacter(hiragana)
+	}
 
-	getRandomHiraganaWithSmallCharacter(): string
+	export const getRandomHiraganaWithSmallCharacter = (): string =>
 	{
 		const hiragana = "きしちにひみりぎじぢびぴ"
 		const smallHiragana = "ゃゅょ"
-		return `${this.pickRandomCharacter(hiragana)}${this.pickRandomCharacter(smallHiragana)}`
-	},
-
-	pickRandomCharacter(string: string): string
-	{
-		return string[Math.floor(Math.random() * string.length)]
-	},
-} as const
-
+		return `${pickRandomCharacter(hiragana)}${pickRandomCharacter(smallHiragana)}`
+	}
+}
 
 export default class GionGenerator
 {
