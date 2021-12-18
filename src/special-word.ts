@@ -29,6 +29,14 @@ export const specialWordList = new Map<string, SpecialWord>([
 		},
 	],
 	[
+		"ぬるぬる",
+		{
+			category: "UserMatch",
+			description: "ぬぁ～んဗ",
+			username: "nullnyat",
+		},
+	],
+	[
 		"わしわし",
 		{
 			category: "Implicate",
