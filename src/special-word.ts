@@ -37,6 +37,15 @@ export const specialWordList = new Map<string, SpecialWord>([
 		},
 	],
 	[
+		"めいめい",
+		{
+			category: "Implicate",
+			cause: "めいめい",
+			content: "おしとやかなお嬢様なのだわ。",
+			link: "https://misskey.m544.net/@mei23",
+		},
+	],
+	[
 		"わしわし",
 		{
 			category: "Implicate",
