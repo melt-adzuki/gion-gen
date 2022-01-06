@@ -26,6 +26,13 @@ const Control = (): JSX.Element =>
 		},
 	)}`
 
+	const noteLink = `https://misskey.io/share?${qs.stringify(
+		{
+			text: `${result} #擬音ジェネレーター`,
+			url: `https://hijiki02.github.io/GION?${qs.stringify({ display: result })}`,
+		},
+	)}`
+
 	return (
 		<Container>
 			<Button primary={ true } onClick={ () => dispatch(generateGion()) }>
@@ -34,6 +41,10 @@ const Control = (): JSX.Element =>
 
 			<Button onClick={ () => window.open(tweetLink) }>
 				ツイートする
+			</Button>
+
+			<Button onClick={() => window.open(noteLink)}>
+				ノートする
 			</Button>
 
 			<Button onClick={ () => window.open("https://github.com/hijiki02/GION") }>
