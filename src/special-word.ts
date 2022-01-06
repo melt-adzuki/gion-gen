@@ -53,6 +53,15 @@ export const specialWordList = new Map<string, SpecialWord>([
 			link: "https://misskey.m544.net/@mei23",
 		},
 	],
+		[
+		"かぼかぼ",
+		{
+			category: "Implicate",
+			cause: "かぼ",
+			content: "おいしいbotを生み出した音ゲー人間",
+			link: "https://misskey.io/@kabo",
+		},
+	],
 	[
 		"わしわし",
 		{
