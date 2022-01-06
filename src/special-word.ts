@@ -52,6 +52,7 @@ export const specialWordList = new Map<string, SpecialWord>([
 			content: "おしとやかなお嬢様なのだわ。",
 			link: "https://misskey.m544.net/@mei23",
 		},
+	[
 	],
 		[
 		"かぼかぼ",
