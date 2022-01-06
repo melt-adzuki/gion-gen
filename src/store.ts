@@ -9,17 +9,23 @@ const forcedResult = params.display?.toString()
 export type State = {
 	gion: GionGenerator[],
 	index: number,
+	isSettingsVisible: boolean,
 }
 
 const initialState: State = {
 	gion: [new GionGenerator().generate(forcedResult)],
 	index: 0,
+	isSettingsVisible: false,
 }
 
 const slice = createSlice({
 	initialState,
 	name: "gion",
 	reducers: {
+		closeSettings: state => ({
+			...state,
+			isSettingsVisible: false,
+		}),
 		generateGion: state => ({
 			...state,
 			gion: [new GionGenerator().generate(), ...state.gion],
@@ -33,10 +39,14 @@ const slice = createSlice({
 			...state,
 			index: state.index + 1,
 		}),
+		openSettings: state => ({
+			...state,
+			isSettingsVisible: true,
+		}),
 	},
 })
 
-export const { generateGion, goNext, goPrev } = slice.actions
+export const { generateGion, goNext, goPrev, closeSettings, openSettings } = slice.actions
 
 export const store = configureStore({
 	middleware: getDefaultMiddleware => getDefaultMiddleware({
