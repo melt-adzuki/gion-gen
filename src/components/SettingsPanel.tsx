@@ -7,9 +7,10 @@ import { useDispatch } from "react-redux"
 const padding = "64px"
 
 const Wrapper = styled.div`
+	z-index: 2;
     position: absolute;
     top: ${padding};
-    width: 50%;
+    width: 768px;
     ${media.lessThan("large")`
         width: 100%;
     `}
@@ -18,6 +19,16 @@ const Wrapper = styled.div`
 	color: black;
 	border-radius: 8px;
 	padding: 32px;
+`
+
+const Background = styled.div`
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5);
 `
 
 const Header = styled.p`
@@ -41,17 +52,21 @@ const SettingsPanel = (): JSX.Element =>
 	if (!selector.isSettingsVisible) return <></>
 
 	return (
-		<Wrapper>
-			<Header>設定</Header>
+		<>
+			<Background />
 
-			<ItemContainer>
-				<ItemTitle>設定できる項目は現在ありません。</ItemTitle>
-			</ItemContainer>
+			<Wrapper>
+				<Header>設定</Header>
 
-			<p>
-				<Button onClick={() => dispatch(closeSettings())}>閉じる</Button>
-			</p>
-		</Wrapper>
+				<ItemContainer>
+					<ItemTitle>設定できる項目は現在ありません。</ItemTitle>
+				</ItemContainer>
+
+				<p>
+					<Button onClick={() => dispatch(closeSettings())}>閉じる</Button>
+				</p>
+			</Wrapper>
+		</>
 	)
 }
 

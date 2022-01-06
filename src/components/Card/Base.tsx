@@ -12,6 +12,7 @@ type Props = {
 }
 
 const Container = styled(Button)`
+    z-index: 1;
     position: absolute;
     display: flex;
     flex-direction: column;
