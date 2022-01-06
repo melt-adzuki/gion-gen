@@ -5,6 +5,8 @@ import Control from "./Control"
 import Granim from "granim"
 import React from "react"
 import Result from "./Result"
+import SettingsButton from "./SettingsButton"
+import SettingsPanel from "./SettingsPanel"
 import styled from "styled-components"
 
 
@@ -42,6 +44,8 @@ class App extends React.Component
 			<>
 				<GranimCanvas id="granim-canvas" />
 				<Container>
+					<SettingsPanel />
+					<SettingsButton />
 					<Arrow />
 					<Card />
 					<Result />
