@@ -80,4 +80,13 @@ export const specialWordList = new Map<string, SpecialWord>([
 			link: "https://www.nicovideo.jp/watch/sm22193155",
 		},
 	],
+	[
+		"ぺいぺい",
+		{
+			category: "Implicate",
+			cause: "PayPay",
+			content: "Yahoo! JAPANが出資しているPayPay株式会社のキャッシュレス決済サービス。",
+			link: "https://paypay.ne.jp/",
+		},
+	],
 ])
