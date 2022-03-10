@@ -22,14 +22,14 @@ const Control = (): JSX.Element =>
 		{
 			hashtags: "擬音ジェネレーター",
 			text: result,
-			url: `https://hijiki02.github.io/GION?${qs.stringify({ display: result })}`,
+			url: `https://gion.azuki.cf?${qs.stringify({ display: result })}`,
 		},
 	)}`
 
 	const noteLink = `https://misskey.io/share?${qs.stringify(
 		{
 			text: `${result} #擬音ジェネレーター`,
-			url: `https://hijiki02.github.io/GION?${qs.stringify({ display: result })}`,
+			url: `https://gion.azuki.cf?${qs.stringify({ display: result })}`,
 		},
 	)}`
 
@@ -47,7 +47,7 @@ const Control = (): JSX.Element =>
 				ノートする
 			</Button>
 
-			<Button onClick={ () => window.open("https://github.com/hijiki02/GION") }>
+			<Button onClick={ () => window.open("https://github.com/melt-adzuki/GION") }>
 				GitHub
 			</Button>
 		</Container>
