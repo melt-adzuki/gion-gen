@@ -1,4 +1,4 @@
-# GION
+# gion-gen
 ![Screenshot](./.img/screenshot.png)
 
 ## What is this

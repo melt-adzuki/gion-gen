@@ -47,7 +47,7 @@ const Control = (): JSX.Element =>
 				ノートする
 			</Button>
 
-			<Button onClick={ () => window.open("https://github.com/melt-adzuki/GION") }>
+			<Button onClick={ () => window.open("https://github.com/melt-adzuki/gion-gen") }>
 				GitHub
 			</Button>
 		</Container>
