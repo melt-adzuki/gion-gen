@@ -17,7 +17,7 @@ const specificOptions = ({ command, mode }) =>
 		}
 	}
 	return {
-		base: "/gion-gen/",
+		base: "/",
 	}
 }
 
