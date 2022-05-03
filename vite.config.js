@@ -1,8 +1,7 @@
-import { loadEnv } from "vite"
 import path from "path"
 import react from "@vitejs/plugin-react"
 
-const specificOptions = ({ command, mode }) =>
+const specificOptions = ({ command }) =>
 {
 	if (command === "serve")
 	{
@@ -12,7 +11,7 @@ const specificOptions = ({ command, mode }) =>
 				fs: {
 					allow: ["."],
 				},
-				host: loadEnv(mode, process.cwd()).VITE_SERVER_IP,
+				host: true,
 			},
 		}
 	}
