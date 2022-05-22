@@ -40,11 +40,11 @@ const Control = (): JSX.Element =>
 			</Button>
 
 			<Button onClick={ () => window.open(tweetLink) }>
-				ツイートする
+				ツイート
 			</Button>
 
 			<Button onClick={() => window.open(noteLink)}>
-				ノートする
+				ノート
 			</Button>
 		</Container>
 	)
