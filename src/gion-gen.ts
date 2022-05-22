@@ -50,86 +50,86 @@ export default class GionGenerator
 		{
 			switch (forcedCase ?? Math.floor(Math.random() * 6))
 			{
-			case 0:
-			/*
-			 * {0}[0] {0}[0]
-			 * しゅるしゅる
-			 */
-				this.result = `${extracted.hiraganaWithSmallCharacter[0]}${extracted.hiragana[0]}`.repeat(2)
-				break
+				case 0:
+					/*
+					 * {0}[0] {0}[0]
+					 * しゅるしゅる
+					 */
+					this.result = `${extracted.hiraganaWithSmallCharacter[0]}${extracted.hiragana[0]}`.repeat(2)
+					break
 
-			case 1:
-			/*
-			 * [0]{0} [0]{0}
-			 * がちゃがちゃ
-			 */
-				this.result = `${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}`.repeat(2)
-				break
+				case 1:
+					/*
+					 * [0]{0} [0]{0}
+					 * がちゃがちゃ
+					 */
+					this.result = `${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}`.repeat(2)
+					break
 
-		/*
-		 * NG: [0]っ [0]
-		 * ぴっぴ
-		 */
+					/*
+					 * NG: [0]っ [0]
+					 * ぴっぴ
+					 */
 
-		/*
-		 * {0}っ {0}
-		 * きゅっきゅ
-		 */
-			case 2:
-				this.result = `${extracted.hiraganaWithSmallCharacter[0]}っ${extracted.hiraganaWithSmallCharacter[0]}`
-				break
+					/*
+					 * {0}っ {0}
+					 * きゅっきゅ
+					 */
+				case 2:
+					this.result = `${extracted.hiraganaWithSmallCharacter[0]}っ${extracted.hiraganaWithSmallCharacter[0]}`
+					break
 
-		/*
-		 * [0]っ[1] [0][1]
-		 * ぎっとぎと
-		 */
-			case 3:
-				this.result = `${extracted.hiragana[0]}っ${extracted.hiragana[1]}${extracted.hiragana[0]}${extracted.hiragana[1]}`
-				break
+					/*
+					 * [0]っ[1] [0][1]
+					 * ぎっとぎと
+					 */
+				case 3:
+					this.result = `${extracted.hiragana[0]}っ${extracted.hiragana[1]}${extracted.hiragana[0]}${extracted.hiragana[1]}`
+					break
 
-		/*
-		 * [0]っ{0} [0]{0}
-		 * べっちょべちょ
-		 */
-			case 4:
-				this.result = `${extracted.hiragana[0]}っ${extracted.hiraganaWithSmallCharacter[0]}${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}`
-				break
+					/*
+					 * [0]っ{0} [0]{0}
+					 * べっちょべちょ
+					 */
+				case 4:
+					this.result = `${extracted.hiragana[0]}っ${extracted.hiraganaWithSmallCharacter[0]}${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}`
+					break
 
-		/*
-		 * NG: {0}っ[0] {0}[0]
-		 * ぴょっこぴょこ
-		 */
+					/*
+					 * NG: {0}っ[0] {0}[0]
+					 * ぴょっこぴょこ
+					 */
 
-		/*
-		 * NG: {0}っ{1} {0}{1}
-		 * ぴょっちゃぴょちゃ
-		 */
+					/*
+					 * NG: {0}っ{1} {0}{1}
+					 * ぴょっちゃぴょちゃ
+					 */
 
-		/*
-		 * NG: [0][1]っ [0][1]
-		 * かちっかち
-		 */
+					/*
+					 * NG: [0][1]っ [0][1]
+					 * かちっかち
+					 */
 
-		/*
-		 * [0]{0}っ [0]{0}っ
-		 * どぴゅっどぴゅっ
-		 */
-			case 5:
-				this.result = `${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}っ`.repeat(2)
-				break
+					/*
+					 * [0]{0}っ [0]{0}っ
+					 * どぴゅっどぴゅっ
+					 */
+				case 5:
+					this.result = `${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}っ`.repeat(2)
+					break
 
-		/*
-		 * NG: {0}[0]っ {0}[0]
-		 * ひょろっひょろ
-		 */
+					/*
+					 * NG: {0}[0]っ {0}[0]
+					 * ひょろっひょろ
+					 */
 
-		/*
-		 * NG: {0}{1}っ {0}{1}
-		 * にょぎゃっにょぎゃ
-		 */
+					/*
+					 * NG: {0}{1}っ {0}{1}
+					 * にょぎゃっにょぎゃ
+					 */
 
-			default:
-				throw new Error("Unexpected value")
+				default:
+					throw new Error("Unexpected value")
 			}
 		}
 

@@ -5,14 +5,14 @@ import { useDispatch } from "react-redux"
 
 
 const Wrapper = styled.div`
-    box-shadow: hsla(0deg, 0%, 0%, 10%) 0 2px 8px 0px;
+	box-shadow: hsla(0deg, 0%, 0%, 10%) 0 2px 8px 0px;
 	background-color: hsla(0, 0%, 95%, 75%);
 	color: black;
 	border-radius: 8px;
 	padding: 32px;
 	margin-inline: auto;
 	margin-block: 32px;
-    max-width: 768px;
+	max-width: 768px;
 	height: auto;
 `
 
@@ -21,16 +21,16 @@ const Background = styled.div`
 `
 
 const Header = styled.p`
-    font-size: 48px;
+	font-size: 48px;
 `
 
 const ItemContainer = styled.section`
-    padding: 32px;
+	padding: 32px;
 `
 
 const ItemTitle = styled.p`
-    font-size: 24px;
-    margin-bottom: 16px;
+	font-size: 24px;
+	margin-bottom: 16px;
 `
 
 const SettingsPanel = (): JSX.Element =>

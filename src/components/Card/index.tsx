@@ -9,14 +9,14 @@ const Card = (): JSX.Element =>
 
 	switch (specialWord?.category)
 	{
-	case "UserMatch":
-		return <UserMatch { ...specialWord } />
+		case "UserMatch":
+			return <UserMatch { ...specialWord } />
 
-	case "Implicate":
-		return <Implicate { ...specialWord } />
+		case "Implicate":
+			return <Implicate { ...specialWord } />
 
-	default:
-		return <></>
+		default:
+			return <></>
 	}
 }
 

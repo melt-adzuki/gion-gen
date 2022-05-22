@@ -5,12 +5,12 @@ import arrowForward from "../../assets/arrow-forward-outline.svg"
 import styled from "styled-components"
 
 type Props = PropsWithoutRef<JSX.IntrinsicElements["button"]> & {
-    direction: "left" | "right"
+	direction: "left" | "right"
 }
 
 const Wrapper = styled(Button)<Props>`
-    width: 64px;
-    height: 64px;
+	width: 64px;
+	height: 64px;
 
 	&::before {
 		content: "";

@@ -6,8 +6,8 @@ const Wrapper = styled.div`
 	text-align: center;
 	font-size: min(10vw, 64px);
 	white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	overflow: hidden;
+	text-overflow: ellipsis;
 `
 
 const Result = (): JSX.Element =>
