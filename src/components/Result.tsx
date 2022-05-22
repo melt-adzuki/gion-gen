@@ -4,7 +4,10 @@ import { useSelector } from "@/store"
 const Wrapper = styled.div`
 	color: white;
 	text-align: center;
-	font-size: min(10vw, 96px);
+	font-size: min(10vw, 64px);
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 const Result = (): JSX.Element =>

@@ -46,10 +46,6 @@ const Control = (): JSX.Element =>
 			<Button onClick={() => window.open(noteLink)}>
 				ノートする
 			</Button>
-
-			<Button onClick={ () => window.open("https://github.com/melt-adzuki/gion-gen") }>
-				GitHub
-			</Button>
 		</Container>
 	)
 }

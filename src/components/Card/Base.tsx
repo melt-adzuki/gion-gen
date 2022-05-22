@@ -1,6 +1,7 @@
 import Button from "@/components/Button"
 import React from "react"
 import media from "styled-media-query"
+import openIcon from "../../assets/open-outline.svg"
 import styled from "styled-components"
 
 type Props = {
@@ -12,15 +13,14 @@ type Props = {
 }
 
 const Container = styled(Button)`
-    z-index: 1;
-    position: absolute;
+    grid-area: 1 / 1 / 2 / 3;
     display: flex;
     flex-direction: column;
     text-align: start;
-    max-width: 90%;
+    max-width: 768px;
     padding: 24px;
+    margin: auto;
     gap: 16px;
-    top: 32px;
 `
 
 const Header = styled.div`
@@ -43,7 +43,7 @@ const Body = styled.div`
 const Icon = styled.img`
     width: 96px;
     height: 96px;
-    ${media.lessThan("large")`
+    ${media.lessThan("huge")`
         width: 64px;
         height: 64px;
     `}
@@ -56,14 +56,14 @@ const Content = styled.div`
 const Title = styled.p`
     display: flex;
     font-size: 24px;
-    ${media.lessThan("large")`
+    ${media.lessThan("huge")`
         font-size: 16px;
     `}
     margin-bottom: 8px;
 
     &::after {
         content: "";
-        background-image: url("./open-outline.svg");
+        background-image: url(${openIcon});
         width: 24px;
         height: 24px;
         margin: auto 8px;
@@ -72,7 +72,7 @@ const Title = styled.p`
 
 const Description = styled.p`
     font-size: 18px;
-    ${media.lessThan("large")`
+    ${media.lessThan("medium")`
         display: none;
     `}
 `
