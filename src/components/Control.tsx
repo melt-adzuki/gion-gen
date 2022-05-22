@@ -43,7 +43,7 @@ const Control = (): JSX.Element =>
 				ツイート
 			</Button>
 
-			<Button onClick={() => window.open(noteLink)}>
+			<Button onClick={ () => window.open(noteLink) }>
 				ノート
 			</Button>
 		</Container>

@@ -52,7 +52,7 @@ const SettingsPanel = (): JSX.Element =>
 				</ItemContainer>
 
 				<p>
-					<Button onClick={() => dispatch(closeSettings())}>閉じる</Button>
+					<Button onClick={ () => dispatch(closeSettings()) }>閉じる</Button>
 				</p>
 			</Wrapper>
 		</>
