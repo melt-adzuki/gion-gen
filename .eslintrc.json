@@ -55,7 +55,7 @@
             "error",
             "tab",
             {
-                "ignoreComments": true
+                "SwitchCase": 1
             }
         ],
         "no-tabs": [
