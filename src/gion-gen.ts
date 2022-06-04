@@ -42,7 +42,7 @@ type Options = Partial<{
 }>
 
 // パターンの中からランダムに擬音を生成
-const generate = ({ forcedResult, forcedCase }: Options = {}) =>
+const generate = ({ forcedResult, forcedCase }: Options = {}): string =>
 {
 	if (forcedResult) return forcedResult
 
