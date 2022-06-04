@@ -56,7 +56,7 @@ const Content = styled.div`
 const Title = styled.p`
 	display: flex;
 	font-size: 24px;
-	${media.lessThan("huge")`
+	${media.lessThan("medium")`
 		font-size: 16px;
 	`}
 	margin-bottom: 8px;
