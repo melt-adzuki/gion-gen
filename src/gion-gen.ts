@@ -1,6 +1,5 @@
 /* eslint-disable id-length */
 
-import { SpecialWord, specialWordList } from "./special-word"
 import patterns from "./patterns"
 
 const pickRandomCharacter = (string: string): string =>
@@ -53,18 +52,4 @@ const generate = ({ forcedResult, forcedCase }: Options = {}) =>
 	return parse(randomPattern)
 }
 
-export default class GionGenerator
-{
-	public result = ""
-
-	public generate(forcedResult?: string, forcedCase?: number): this
-	{
-		this.result = generate({ forcedCase, forcedResult })
-		return this
-	}
-
-	public getSpecialWord(): SpecialWord | undefined
-	{
-		return specialWordList.get(this.result)
-	}
-}
+export default generate

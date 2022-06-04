@@ -1,19 +1,19 @@
 import { TypedUseSelectorHook, useSelector as nativeUseSelector } from "react-redux"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
-import GionGenerator from "@/gion-gen"
+import generate from "@/gion-gen"
 import qs from "qs"
 
 const params = qs.parse(location.search, { ignoreQueryPrefix: true })
 const forcedResult = params.display?.toString()
 
 export type State = {
-	gion: GionGenerator[],
+	gion: ReturnType<typeof generate>[],
 	index: number,
 	isSettingsVisible: boolean,
 }
 
 const initialState: State = {
-	gion: [new GionGenerator().generate(forcedResult)],
+	gion: [generate({ forcedResult })],
 	index: 0,
 	isSettingsVisible: false,
 }
@@ -28,7 +28,7 @@ const slice = createSlice({
 		}),
 		generateGion: state => ({
 			...state,
-			gion: [new GionGenerator().generate(), ...state.gion],
+			gion: [generate(), ...state.gion],
 			index: 0,
 		}),
 		goNext: state => ({
@@ -49,9 +49,6 @@ const slice = createSlice({
 export const { generateGion, goNext, goPrev, closeSettings, openSettings } = slice.actions
 
 export const store = configureStore({
-	middleware: getDefaultMiddleware => getDefaultMiddleware({
-		serializableCheck: false,
-	}),
 	reducer: slice.reducer,
 })
 
