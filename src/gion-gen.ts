@@ -1,23 +1,56 @@
+/* eslint-disable id-length */
+
 import { SpecialWord, specialWordList } from "./special-word"
+import patterns from "./patterns"
 
-namespace Utils {
-	const pickRandomCharacter = (string: string): string =>
-	{
-		return string[Math.floor(Math.random() * string.length)]
+const pickRandomCharacter = (string: string): string =>
+{
+	return string[Math.floor(Math.random() * string.length)]
+}
+
+const getRandomHiragana = (): string =>
+{
+	const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
+	return pickRandomCharacter(hiragana)
+}
+
+const getRandomHiraganaWithSmallCharacter = (): string =>
+{
+	const hiragana = "きしちにひみりぎじぢびぴ"
+	const smallHiragana = "ゃゅょ"
+	return `${pickRandomCharacter(hiragana)}${pickRandomCharacter(smallHiragana)}`
+}
+
+// パターンを解析して置換
+const parse = (input: "AaAa" | typeof patterns[number]): string =>
+{
+	const tags = {
+		A: getRandomHiragana(),
+		B: getRandomHiraganaWithSmallCharacter(),
+		a: getRandomHiragana(),
+		b: getRandomHiraganaWithSmallCharacter(),
 	}
 
-	export const getRandomHiragana = (): string =>
-	{
-		const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
-		return pickRandomCharacter(hiragana)
-	}
+	return input
+		.split("")
+		.map(character => Object.keys(tags).some(tag => character === tag) ? tags[character as keyof typeof tags] : character)
+		.join("")
+}
 
-	export const getRandomHiraganaWithSmallCharacter = (): string =>
-	{
-		const hiragana = "きしちにひみりぎじぢびぴ"
-		const smallHiragana = "ゃゅょ"
-		return `${pickRandomCharacter(hiragana)}${pickRandomCharacter(smallHiragana)}`
-	}
+type Options = Partial<{
+	forcedResult?: string
+	forcedCase?: number
+}>
+
+// パターンの中からランダムに擬音を生成
+const generate = ({ forcedResult, forcedCase }: Options = {}) =>
+{
+	if (forcedResult) return forcedResult
+
+	const caseNumber = typeof forcedCase === "undefined" ? Math.floor(Math.random() * patterns.length * 2) : forcedCase
+	const randomPattern = typeof patterns[caseNumber] === "undefined" ? "AaAa" : patterns[caseNumber]
+
+	return parse(randomPattern)
 }
 
 export default class GionGenerator
@@ -26,113 +59,7 @@ export default class GionGenerator
 
 	public generate(forcedResult?: string, forcedCase?: number): this
 	{
-		const extracted = {
-			hiragana: [Utils.getRandomHiragana(), Utils.getRandomHiragana()],
-			hiraganaWithSmallCharacter: [Utils.getRandomHiraganaWithSmallCharacter()],
-		} as const
-
-		if (forcedResult) this.result = forcedResult
-
-		/*
-		 * 1/5の確率を生成
-		 * 0, 1, 2, 3, 4
-		 */
-		else if (typeof forcedCase === "undefined" && !(Math.floor(Math.random() * 5) === 0))
-		{
-			/*
-			 * [0][1] [0][1]
-			 * てくてく
-			 */
-			this.result = `${extracted.hiragana[0]}${extracted.hiragana[1]}`.repeat(2)
-		}
-
-		else
-		{
-			switch (forcedCase ?? Math.floor(Math.random() * 6))
-			{
-				case 0:
-					/*
-					 * {0}[0] {0}[0]
-					 * しゅるしゅる
-					 */
-					this.result = `${extracted.hiraganaWithSmallCharacter[0]}${extracted.hiragana[0]}`.repeat(2)
-					break
-
-				case 1:
-					/*
-					 * [0]{0} [0]{0}
-					 * がちゃがちゃ
-					 */
-					this.result = `${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}`.repeat(2)
-					break
-
-					/*
-					 * NG: [0]っ [0]
-					 * ぴっぴ
-					 */
-
-					/*
-					 * {0}っ {0}
-					 * きゅっきゅ
-					 */
-				case 2:
-					this.result = `${extracted.hiraganaWithSmallCharacter[0]}っ${extracted.hiraganaWithSmallCharacter[0]}`
-					break
-
-					/*
-					 * [0]っ[1] [0][1]
-					 * ぎっとぎと
-					 */
-				case 3:
-					this.result = `${extracted.hiragana[0]}っ${extracted.hiragana[1]}${extracted.hiragana[0]}${extracted.hiragana[1]}`
-					break
-
-					/*
-					 * [0]っ{0} [0]{0}
-					 * べっちょべちょ
-					 */
-				case 4:
-					this.result = `${extracted.hiragana[0]}っ${extracted.hiraganaWithSmallCharacter[0]}${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}`
-					break
-
-					/*
-					 * NG: {0}っ[0] {0}[0]
-					 * ぴょっこぴょこ
-					 */
-
-					/*
-					 * NG: {0}っ{1} {0}{1}
-					 * ぴょっちゃぴょちゃ
-					 */
-
-					/*
-					 * NG: [0][1]っ [0][1]
-					 * かちっかち
-					 */
-
-					/*
-					 * [0]{0}っ [0]{0}っ
-					 * どぴゅっどぴゅっ
-					 */
-				case 5:
-					this.result = `${extracted.hiragana[0]}${extracted.hiraganaWithSmallCharacter[0]}っ`.repeat(2)
-					break
-
-					/*
-					 * NG: {0}[0]っ {0}[0]
-					 * ひょろっひょろ
-					 */
-
-					/*
-					 * NG: {0}{1}っ {0}{1}
-					 * にょぎゃっにょぎゃ
-					 */
-
-				default:
-					throw new Error("Unexpected value")
-			}
-		}
-
+		this.result = generate({ forcedCase, forcedResult })
 		return this
 	}
 
