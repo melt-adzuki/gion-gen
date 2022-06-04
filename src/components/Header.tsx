@@ -1,5 +1,5 @@
+import { changeVisibilityOfSettings } from "@/store"
 import gitHubIcon from "../assets/logo-github.svg"
-import { openSettings } from "@/store"
 import settingsIcon from "../assets/settings-outline.svg"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
@@ -29,7 +29,7 @@ const Header = (): JSX.Element =>
 
 	return (
 		<Wrapper>
-			<Button imagePath={ settingsIcon } onClick={ () => dispatch(openSettings()) } />
+			<Button imagePath={ settingsIcon } onClick={ () => dispatch(changeVisibilityOfSettings("open")) } />
 			<Button imagePath={ gitHubIcon } onClick={ () => window.open("https://github.com/melt-adzuki/gion-gen") } />
 		</Wrapper>
 	)

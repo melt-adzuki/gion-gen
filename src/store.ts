@@ -1,5 +1,5 @@
+import { PayloadAction, configureStore, createSlice } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useSelector as nativeUseSelector } from "react-redux"
-import { configureStore, createSlice } from "@reduxjs/toolkit"
 import generate from "@/gion-gen"
 import qs from "qs"
 
@@ -22,9 +22,9 @@ const slice = createSlice({
 	initialState,
 	name: "gion",
 	reducers: {
-		closeSettings: state => ({
+		changeVisibilityOfSettings: (state, action: PayloadAction<"open" | "close">) => ({
 			...state,
-			isSettingsVisible: false,
+			isSettingsVisible: action.payload === "open",
 		}),
 		generateGion: state => ({
 			...state,
@@ -39,14 +39,10 @@ const slice = createSlice({
 			...state,
 			index: state.index + 1,
 		}),
-		openSettings: state => ({
-			...state,
-			isSettingsVisible: true,
-		}),
 	},
 })
 
-export const { generateGion, goNext, goPrev, closeSettings, openSettings } = slice.actions
+export const { generateGion, goNext, goPrev, changeVisibilityOfSettings } = slice.actions
 
 export const store = configureStore({
 	reducer: slice.reducer,

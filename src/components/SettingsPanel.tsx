@@ -1,4 +1,4 @@
-import { closeSettings, useSelector } from "@/store"
+import { changeVisibilityOfSettings, useSelector } from "@/store"
 import Button from "./Button"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
@@ -52,7 +52,7 @@ const SettingsPanel = (): JSX.Element =>
 				</ItemContainer>
 
 				<p>
-					<Button onClick={ () => dispatch(closeSettings()) }>閉じる</Button>
+					<Button onClick={ () => dispatch(changeVisibilityOfSettings("close")) }>閉じる</Button>
 				</p>
 			</Wrapper>
 		</>
