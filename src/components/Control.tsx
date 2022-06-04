@@ -16,7 +16,7 @@ const Control = (): JSX.Element =>
 	const dispatch = useDispatch()
 	const selector = useSelector(state => state)
 
-	const { result } = selector.gion[selector.index]
+	const result = selector.gion[selector.index]
 
 	const tweetLink = `https://twitter.com/intent/tweet?${qs.stringify(
 		{
