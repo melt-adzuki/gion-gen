@@ -37,8 +37,8 @@ const parse = (input: "AaAa" | typeof patterns[number]): string =>
 }
 
 type Options = Partial<{
-	forcedResult?: string
-	forcedCase?: number
+	forcedResult: string
+	forcedCase: number
 }>
 
 // パターンの中からランダムに擬音を生成

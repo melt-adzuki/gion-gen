@@ -2,24 +2,14 @@ import { describe, it } from "mocha"
 import { expect } from "chai"
 import generate from "../src/gion-gen"
 
-interface OutputLengthTestOptions {
-	caseToTest: number,
-	expectedLength: number,
-}
-
 const testOutputLength = (...lengths: number[]): void =>
 {
-	const optionsArray: OutputLengthTestOptions[] = []
-
-	lengths.forEach((length, index) =>
-	{
-		optionsArray.push({
+	lengths.map((length, index) => (
+		{
 			caseToTest: index,
 			expectedLength: length,
-		})
-	})
-
-	optionsArray.forEach(options =>
+		}
+	)).forEach(options =>
 	{
 		it(`ケース${options.caseToTest}の文字数が${options.expectedLength}`, () =>
 		{
