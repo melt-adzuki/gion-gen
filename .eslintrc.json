@@ -176,6 +176,7 @@
         "no-console": 0,
         "no-ternary": 0,
         "no-plusplus": 0,
+        "no-multi-assign": 0,
         "linebreak-style": 0,
         "no-magic-numbers": 0,
         "arrow-body-style": 0,
@@ -183,6 +184,7 @@
         "no-confusing-arrow": 0,
         "no-warning-comments": 0,
         "no-use-before-define": 0,
+        "no-useless-constructor": 0,
         "newline-per-chained-call": 0,
         "function-call-argument-newline": 0
     }
