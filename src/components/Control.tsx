@@ -17,19 +17,20 @@ const Control = (): JSX.Element =>
 	const selector = useSelector(state => state)
 
 	const result = selector.gion[selector.index]
+	const { index, salt, seed } = selector
 
 	const tweetLink = `https://twitter.com/intent/tweet?${qs.stringify(
 		{
 			hashtags: "擬音ジェネレーター",
 			text: result,
-			url: `https://gion.azuki.cf?${qs.stringify({ display: result })}`,
+			url: `https://gion.azuki.cf?${qs.stringify({ seed: seed + (salt - index) })}`,
 		},
 	)}`
 
 	const noteLink = `https://misskey.io/share?${qs.stringify(
 		{
 			text: `${result} #擬音ジェネレーター`,
-			url: `https://gion.azuki.cf?${qs.stringify({ display: result })}`,
+			url: `https://gion.azuki.cf?${qs.stringify({ seed: seed + (salt - index) })}`,
 		},
 	)}`
 

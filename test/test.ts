@@ -1,6 +1,8 @@
 import { describe, it } from "mocha"
+import GionGenerator from "../src/gion-gen"
 import { expect } from "chai"
-import generate from "../src/gion-gen"
+
+const gionGenerator = new GionGenerator()
 
 const testOutputLength = (...lengths: number[]): void =>
 {
@@ -15,7 +17,7 @@ const testOutputLength = (...lengths: number[]): void =>
 		{
 			for (let i = 0; i <= 10; i++)
 			{
-				const gion = generate({ forcedCase: options.caseToTest })
+				const gion = gionGenerator.generate({ forcedCase: options.caseToTest, salt: i })
 				console.log("%d: %s", i, gion)
 				expect(gion).to.be.lengthOf(options.expectedLength)
 			}
@@ -29,7 +31,7 @@ describe("ジェネレーターの出力", () =>
 	{
 		for (let i = 0; i <= 100; i++)
 		{
-			const gion = generate()
+			const gion = gionGenerator.generate({ salt: i })
 			console.log("%d: %s", i, gion)
 			expect(gion).not.to.equal("")
 		}

@@ -1,55 +1,65 @@
 /* eslint-disable id-length */
 
 import patterns from "./patterns"
+import seedrandom from "seedrandom"
 
-const pickRandomCharacter = (string: string): string =>
+export default class GionGenerator
 {
-	return string[Math.floor(Math.random() * string.length)]
-}
+	private randomNumberGenerator!: seedrandom.PRNG
 
-const getRandomHiragana = (): string =>
-{
-	const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
-	return pickRandomCharacter(hiragana)
-}
+	constructor(private seed?: string)
+	{ }
 
-const getRandomHiraganaWithSmallCharacter = (): string =>
-{
-	const hiragana = "きしちにひみりぎじぢびぴ"
-	const smallHiragana = "ゃゅょ"
-	return `${pickRandomCharacter(hiragana)}${pickRandomCharacter(smallHiragana)}`
-}
-
-// パターンを解析して置換
-const parse = (input: "AaAa" | typeof patterns[number]): string =>
-{
-	const tags = {
-		A: getRandomHiragana(),
-		B: getRandomHiraganaWithSmallCharacter(),
-		a: getRandomHiragana(),
-		b: getRandomHiraganaWithSmallCharacter(),
+	private init(salt: number): GionGenerator
+	{
+		this.randomNumberGenerator = this.seed ? seedrandom(this.seed + salt.toString()) : seedrandom()
+		return this
 	}
 
-	return input
-		.split("")
-		.map(character => Object.keys(tags).some(tag => character === tag) ? tags[character as keyof typeof tags] : character)
-		.join("")
+	private pickRandomCharacter(string: string): string
+	{
+		return string[Math.floor(this.randomNumberGenerator() * string.length)]
+	}
+
+	private getRandomHiragana(): string
+	{
+		const hiragana = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんがぎぐげござじずぜぞだじづでどばびぶべぼぱぴぷぺぽ"
+		return this.pickRandomCharacter(hiragana)
+	}
+
+	private getRandomHiraganaWithSmallCharacter(): string
+	{
+		const hiragana = "きしちにひみりぎじぢびぴ"
+		const smallHiragana = "ゃゅょ"
+		return `${this.pickRandomCharacter(hiragana)}${this.pickRandomCharacter(smallHiragana)}`
+	}
+
+	// パターンを解析して置換
+	private parse(input: "AaAa" | typeof patterns[number]): string
+	{
+		const tags = {
+			A: this.getRandomHiragana(),
+			B: this.getRandomHiraganaWithSmallCharacter(),
+			a: this.getRandomHiragana(),
+			b: this.getRandomHiraganaWithSmallCharacter(),
+		}
+
+		return input
+			.split("")
+			.map(character => Object.keys(tags).some(tag => character === tag) ? tags[character as keyof typeof tags] : character)
+			.join("")
+	}
+
+	// パターンの中からランダムに擬音を生成
+	public generate({ forcedResult, forcedCase, salt }: Partial<{ forcedResult: string, forcedCase: number, salt: number }> = {}): string
+	{
+		if (forcedResult) return forcedResult
+
+		this.init(salt || 0)
+
+		const caseNumber = typeof forcedCase === "undefined" ? Math.floor(this.randomNumberGenerator() * patterns.length) * 2 : forcedCase
+		const randomPattern = typeof patterns[caseNumber] === "undefined" ? "AaAa" : patterns[caseNumber]
+
+		return this.parse(randomPattern)
+	}
 }
-
-type Options = Partial<{
-	forcedResult: string
-	forcedCase: number
-}>
-
-// パターンの中からランダムに擬音を生成
-const generate = ({ forcedResult, forcedCase }: Options = {}): string =>
-{
-	if (forcedResult) return forcedResult
-
-	const caseNumber = typeof forcedCase === "undefined" ? Math.floor(Math.random() * patterns.length * 2) : forcedCase
-	const randomPattern = typeof patterns[caseNumber] === "undefined" ? "AaAa" : patterns[caseNumber]
-
-	return parse(randomPattern)
-}
-
-export default generate
