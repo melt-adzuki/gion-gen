@@ -2,7 +2,7 @@ import { describe, it } from "mocha"
 import GionGenerator from "../src/gion-gen"
 import { expect } from "chai"
 
-const gionGenerator = new GionGenerator()
+const gionGenerator = new GionGenerator
 
 const testOutputLength = (...lengths: number[]): void =>
 {

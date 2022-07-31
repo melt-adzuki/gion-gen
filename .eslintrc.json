@@ -132,6 +132,10 @@
             "error",
             "as-needed"
         ],
+        "new-parens": [
+            "error",
+            "never"
+        ],
         "curly": [
             "error",
             "multi-line"
