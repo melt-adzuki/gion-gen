@@ -10,10 +10,9 @@ export default class GionGenerator
 	constructor(private seed?: string)
 	{ }
 
-	private init(salt: number): GionGenerator
+	private init(salt: number): void
 	{
 		this.randomNumberGenerator = this.seed ? seedrandom(this.seed + salt.toString()) : seedrandom()
-		return this
 	}
 
 	private pickRandomCharacter(string: string): string
