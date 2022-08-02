@@ -6,9 +6,9 @@ import qs from "qs"
 const params = qs.parse(location.search, { ignoreQueryPrefix: true })
 const forcedResult = params.display?.toString()
 
-const seedRegex = (/(?<seed>\d{6})(?<salt>\d*)/u).exec(params.seed?.toString() || "")?.groups
-const salt = Number(seedRegex?.salt) || 0
-const seed = seedRegex?.seed || Math.floor(Math.random() * 1000000).toString()
+const seedRegex = (/(?<seed>\d{6})(?<salt>\d*)/u).exec(params.seed?.toString() ?? "")?.groups
+const salt = Number(seedRegex?.salt ?? 0)
+const seed = seedRegex?.seed ?? Math.floor(Math.random() * 1000000).toString()
 
 const gionGenerator = new GionGenerator(seed)
 

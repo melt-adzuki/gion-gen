@@ -54,7 +54,7 @@ export default class GionGenerator
 	{
 		if (forcedResult) return forcedResult
 
-		this.init(salt || 0)
+		this.init(salt ?? 0)
 
 		const caseNumber = typeof forcedCase === "undefined" ? Math.floor(this.randomNumberGenerator() * patterns.length) * 2 : forcedCase
 		const randomPattern = typeof patterns[caseNumber] === "undefined" ? "AaAa" : patterns[caseNumber]
