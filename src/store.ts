@@ -21,7 +21,7 @@ export type State = {
 }
 
 const initialState: State = {
-	gion: [gionGenerator.generate({ forcedResult, salt })],
+	gion: [forcedResult ?? gionGenerator.generate({ salt })],
 	index: 0,
 	isSettingsVisible: false,
 	salt,
@@ -59,6 +59,6 @@ export const store = configureStore({
 	reducer: slice.reducer,
 })
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>
 
 export const useSelector: TypedUseSelectorHook<RootState> = nativeUseSelector

@@ -50,14 +50,12 @@ export default class GionGenerator
 	}
 
 	// パターンの中からランダムに擬音を生成
-	public generate({ forcedResult, forcedCase, salt }: Partial<{ forcedResult: string, forcedCase: number, salt: number }> = {}): string
+	public generate({ salt, forcedCase }: { salt?: number, forcedCase?: number }): string
 	{
-		if (forcedResult) return forcedResult
-
 		this.init(salt ?? 0)
 
-		const caseNumber = typeof forcedCase === "undefined" ? Math.floor(this.randomNumberGenerator() * patterns.length) * 2 : forcedCase
-		const randomPattern = typeof patterns[caseNumber] === "undefined" ? "AaAa" : patterns[caseNumber]
+		const caseNumber = forcedCase ?? Math.floor(this.randomNumberGenerator() * patterns.length) * 2
+		const randomPattern = patterns[caseNumber] ?? "AaAa"
 
 		return this.parse(randomPattern)
 	}
