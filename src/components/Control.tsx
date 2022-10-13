@@ -3,6 +3,7 @@ import Button from "./Button"
 import qs from "qs"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
+import { useState } from "react"
 
 const Container = styled.div`
 	display: flex;
@@ -19,20 +20,18 @@ const Control = (): JSX.Element =>
 	const result = selector.gion[selector.index]
 	const { index, salt, seed } = selector
 
-	const tweetLink = `https://twitter.com/intent/tweet?${qs.stringify(
-		{
-			hashtags: "擬音ジェネレーター",
-			text: result,
-			url: `https://gion.azuki.cf?${qs.stringify({ seed: seed + (salt - index) })}`,
-		},
-	)}`
+	const content = `${result} #擬音ジェネレーター\nhttps://gion.azuki.cf?${qs.stringify({ seed: seed + (salt - index) })}`
+	const tweetLink = `https://twitter.com/intent/tweet?${qs.stringify({ text: content })}`
 
-	const noteLink = `https://misskey.io/share?${qs.stringify(
-		{
-			text: `${result} #擬音ジェネレーター`,
-			url: `https://gion.azuki.cf?${qs.stringify({ seed: seed + (salt - index) })}`,
-		},
-	)}`
+	const [isCopied, setIsCopied] = useState<boolean>(false)
+
+	const copyLink = (): void =>
+	{
+		navigator.clipboard.writeText(content)
+		setIsCopied(true)
+
+		setTimeout((): void => setIsCopied(false), 1500)
+	}
 
 	return (
 		<Container>
@@ -44,8 +43,8 @@ const Control = (): JSX.Element =>
 				ツイート
 			</Button>
 
-			<Button onClick={ () => window.open(noteLink) }>
-				ノート
+			<Button onClick={ () => copyLink() }>
+				{isCopied ? "✔コピー" : "コピー"}
 			</Button>
 		</Container>
 	)
