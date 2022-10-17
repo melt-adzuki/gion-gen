@@ -7,14 +7,6 @@ export default class GionGenerator
 {
 	private randomNumberGenerator!: seedrandom.PRNG
 
-	constructor(private seed?: string)
-	{ }
-
-	private init(salt: number): void
-	{
-		this.randomNumberGenerator = this.seed ? seedrandom(this.seed + salt.toString()) : seedrandom()
-	}
-
 	private pickRandomCharacter(string: string): string
 	{
 		return string[Math.floor(this.randomNumberGenerator() * string.length)]
@@ -50,9 +42,9 @@ export default class GionGenerator
 	}
 
 	// パターンの中からランダムに擬音を生成
-	public generate({ salt, forcedCase }: { salt?: number, forcedCase?: number }): string
+	public generate({ seed, forcedCase }: { seed: string, forcedCase?: number }): string
 	{
-		this.init(salt ?? 0)
+		this.randomNumberGenerator = seedrandom(seed)
 
 		const caseNumber = forcedCase ?? Math.floor(this.randomNumberGenerator() * patterns.length) * 2
 		const randomPattern = patterns[caseNumber] ?? "AaAa"

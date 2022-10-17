@@ -10,7 +10,7 @@ const seedRegex = (/(?<seed>\d{6})(?<salt>\d*)/u).exec(params.seed?.toString() ?
 const salt = Number(seedRegex?.salt ?? 0)
 const seed = seedRegex?.seed ?? Math.floor(Math.random() * 1000000).toString()
 
-const gionGenerator = new GionGenerator(seed)
+const gionGenerator = new GionGenerator
 
 export type State = {
 	gion: ReturnType<GionGenerator["generate"]>[],
@@ -21,7 +21,7 @@ export type State = {
 }
 
 const initialState: State = {
-	gion: [forcedResult ?? gionGenerator.generate({ salt })],
+	gion: [forcedResult ?? gionGenerator.generate({ seed: seed + salt.toString() })],
 	index: 0,
 	isSettingsVisible: false,
 	salt,
@@ -38,7 +38,7 @@ const slice = createSlice({
 		}),
 		generateGion: state => ({
 			...state,
-			gion: [gionGenerator.generate({ salt: state.salt + 1 }), ...state.gion],
+			gion: [gionGenerator.generate({ seed: seed + (state.salt + 1).toString() }), ...state.gion],
 			index: 0,
 			salt: state.salt + 1,
 		}),

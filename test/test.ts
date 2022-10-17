@@ -17,7 +17,7 @@ const testOutputLength = (...lengths: number[]): void =>
 		{
 			for (let i = 0; i <= 10; i++)
 			{
-				const gion = gionGenerator.generate({ forcedCase: options.caseToTest, salt: i })
+				const gion = gionGenerator.generate({ forcedCase: options.caseToTest, seed: i.toString() })
 				console.log("%d: %s", i, gion)
 				expect(gion).to.be.lengthOf(options.expectedLength)
 			}
@@ -31,7 +31,7 @@ describe("ジェネレーターの出力", () =>
 	{
 		for (let i = 0; i <= 100; i++)
 		{
-			const gion = gionGenerator.generate({ salt: i })
+			const gion = gionGenerator.generate({ seed: i.toString() })
 			console.log("%d: %s", i, gion)
 			expect(gion).not.to.equal("")
 		}
