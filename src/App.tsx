@@ -1,5 +1,6 @@
 import "modern-css-reset"
 import "@/assets/main.css"
+import { useEffect, useRef } from "react"
 import Arrow from "@/components/playground/Arrow"
 import Card from "@/components/playground/Card"
 import Control from "@/components/playground/Control"
@@ -9,7 +10,7 @@ import Result from "@/components/playground/Result"
 import SettingsPanel from "@/components/SettingsPanel"
 import media from "styled-media-query"
 import styled from "styled-components"
-import { useEffect } from "react"
+import styles from "./App.module.css"
 
 const Grid = styled.section`
 	font-family: "RocknRoll One", sans-serif;
@@ -45,12 +46,14 @@ const Top = styled.div`
 
 const App = (): JSX.Element =>
 {
+	const granimCanvasRef = useRef(null)
+
 	useEffect(() =>
 	{
 		// eslint-disable-next-line no-new
 		new Granim({
 			direction: "left-right",
-			element: "#granim-canvas",
+			element: granimCanvasRef.current!,
 			states:
 			{
 				"default-state":
@@ -60,12 +63,12 @@ const App = (): JSX.Element =>
 				},
 			},
 		})
-	}, [])
+	}, [granimCanvasRef])
 
 	return (
 		<>
-			<canvas className="stack" id="granim-canvas" />
-			<Grid className="stack">
+			<canvas className={ styles.stack } ref={ granimCanvasRef } />
+			<Grid className={ styles.stack }>
 				<Top>
 					<Header />
 					<Card />

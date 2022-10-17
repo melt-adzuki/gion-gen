@@ -2,13 +2,3 @@ body {
 	background-color: black;
 	font-family: "RocknRoll One", sans-serif;
 }
-
-.stack {
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-}
