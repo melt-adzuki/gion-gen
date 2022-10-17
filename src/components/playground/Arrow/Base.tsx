@@ -1,7 +1,7 @@
 import React, { PropsWithoutRef } from "react"
-import Button from "../Button"
-import arrowBack from "../../assets/arrow-back-outline.svg"
-import arrowForward from "../../assets/arrow-forward-outline.svg"
+import Button from "@/components/Button"
+import arrowBack from "@/assets/arrow-back-outline.svg"
+import arrowForward from "@/assets/arrow-forward-outline.svg"
 import styled from "styled-components"
 
 type Props = PropsWithoutRef<JSX.IntrinsicElements["button"]> & {

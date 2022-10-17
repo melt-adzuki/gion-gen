@@ -1,7 +1,7 @@
 import Button from "@/components/Button"
 import React from "react"
 import media from "styled-media-query"
-import openIcon from "../../assets/open-outline.svg"
+import openIcon from "@/assets/open-outline.svg"
 import styled from "styled-components"
 
 type Props = {

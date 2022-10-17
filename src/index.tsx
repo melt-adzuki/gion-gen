@@ -1,4 +1,4 @@
-import App from "@/components/App"
+import App from "@/App"
 import { Provider } from "react-redux"
 import ReactDOM from "react-dom"
 import { store } from "@/store"

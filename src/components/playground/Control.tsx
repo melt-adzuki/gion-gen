@@ -1,5 +1,5 @@
 import { generateGion, useSelector } from "@/store"
-import Button from "./Button"
+import Button from "../Button"
 import qs from "qs"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
