@@ -2,6 +2,7 @@ import { changeVisibilityOfSettings, useSelector } from "@/store"
 import Button from "./Button"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
+import utilStyles from "@/utils.module.css"
 
 
 const Wrapper = styled.div`
@@ -42,9 +43,9 @@ const SettingsPanel = (): JSX.Element =>
 
 	return (
 		<>
-			<Background className="stack" />
+			<Background className={utilStyles.stack} />
 
-			<Wrapper className="stack">
+			<Wrapper className={utilStyles.stack}>
 				<Header>設定</Header>
 
 				<ItemContainer>

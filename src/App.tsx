@@ -10,7 +10,7 @@ import Result from "@/components/playground/Result"
 import SettingsPanel from "@/components/SettingsPanel"
 import media from "styled-media-query"
 import styled from "styled-components"
-import styles from "./App.module.css"
+import utilStyles from "./utils.module.css"
 
 const Grid = styled.section`
 	font-family: "RocknRoll One", sans-serif;
@@ -67,8 +67,8 @@ const App = (): JSX.Element =>
 
 	return (
 		<>
-			<canvas className={styles.stack} ref={granimCanvasRef} />
-			<Grid className={styles.stack}>
+			<canvas className={utilStyles.stack} ref={granimCanvasRef} />
+			<Grid className={utilStyles.stack}>
 				<Top>
 					<Header />
 					<Card />
