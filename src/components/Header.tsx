@@ -29,8 +29,8 @@ const Header = (): JSX.Element =>
 
 	return (
 		<Wrapper>
-			<Button imagePath={ settingsIcon } onClick={ () => dispatch(changeVisibilityOfSettings("open")) } />
-			<Button imagePath={ gitHubIcon } onClick={ () => window.open("https://github.com/melt-adzuki/gion-gen") } />
+			<Button imagePath={settingsIcon} onClick={() => dispatch(changeVisibilityOfSettings("open"))} />
+			<Button imagePath={gitHubIcon} onClick={() => window.open("https://github.com/melt-adzuki/gion-gen")} />
 		</Wrapper>
 	)
 }

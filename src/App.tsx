@@ -67,8 +67,8 @@ const App = (): JSX.Element =>
 
 	return (
 		<>
-			<canvas className={ styles.stack } ref={ granimCanvasRef } />
-			<Grid className={ styles.stack }>
+			<canvas className={styles.stack} ref={granimCanvasRef} />
+			<Grid className={styles.stack}>
 				<Top>
 					<Header />
 					<Card />

@@ -24,7 +24,7 @@ const Wrapper = styled(Button)<Props>`
 
 const Base: React.FC<Props> = props =>
 {
-	return <Wrapper direction={ props.direction } onClick={ props.onClick } />
+	return <Wrapper direction={props.direction} onClick={props.onClick} />
 }
 
 export default Base

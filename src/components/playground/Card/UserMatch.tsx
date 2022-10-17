@@ -7,10 +7,10 @@ const UserMatch: React.FC<PropsOf<"UserMatch">> = props =>
 	return (
 		<Base
 			category="GION UserMatch"
-			iconPath={ `https://unavatar.io/twitter/${props.username}` }
-			link={ `https://twitter.com/${props.username}` }
-			title={ props.username }
-			description={ props.description }
+			iconPath={`https://unavatar.io/twitter/${props.username}`}
+			link={`https://twitter.com/${props.username}`}
+			title={props.username}
+			description={props.description}
 		/>
 	)
 }

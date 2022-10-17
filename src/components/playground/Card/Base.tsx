@@ -80,12 +80,12 @@ const Description = styled.p`
 const Base: React.FC<Props> = props =>
 {
 	return (
-		<Container onClick={ () => window.open(props.link) }>
+		<Container onClick={() => window.open(props.link)}>
 			<Header>
 				<Category>{ props.category }</Category>
 			</Header>
 			<Body>
-				{ props.iconPath && <Icon src={ props.iconPath } /> }
+				{ props.iconPath && <Icon src={props.iconPath} /> }
 				<Content>
 					<Title>{ props.title }</Title>
 					<Description>{ props.description }</Description>

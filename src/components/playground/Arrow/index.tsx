@@ -34,13 +34,13 @@ const Arrow = (): JSX.Element =>
 			{
 				selector.gion[selector.index + 1] &&
 				<Left>
-					<Base direction="left" onClick={ () => dispatch(goPrev()) } />
+					<Base direction="left" onClick={() => dispatch(goPrev())} />
 				</Left>
 			}
 			{
 				selector.gion[selector.index - 1] &&
 				<Right>
-					<Base direction="right" onClick={ () => dispatch(goNext()) } />
+					<Base direction="right" onClick={() => dispatch(goNext())} />
 				</Right>
 			}
 		</>

@@ -35,15 +35,15 @@ const Control = (): JSX.Element =>
 
 	return (
 		<Container>
-			<Button primary={ true } onClick={ () => dispatch(generateGion()) }>
+			<Button primary={true} onClick={() => dispatch(generateGion())}>
 				再生成
 			</Button>
 
-			<Button onClick={ () => window.open(tweetLink) }>
+			<Button onClick={() => window.open(tweetLink)}>
 				ツイート
 			</Button>
 
-			<Button onClick={ () => copyLink() }>
+			<Button onClick={() => copyLink()}>
 				{isCopied ? "✔コピー" : "コピー"}
 			</Button>
 		</Container>

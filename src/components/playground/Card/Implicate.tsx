@@ -7,9 +7,9 @@ const Implicate: React.FC<PropsOf<"Implicate">> = props =>
 	return (
 		<Base
 			category="GION Implicate"
-			link={ props.link }
-			title={ props.cause }
-			description={ props.content }
+			link={props.link}
+			title={props.cause}
+			description={props.content}
 		/>
 	)
 }
