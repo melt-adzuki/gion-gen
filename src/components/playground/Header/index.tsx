@@ -1,6 +1,6 @@
 import { changeVisibilityOfSettings } from "@/store"
-import gitHubIcon from "../assets/logo-github.svg"
-import settingsIcon from "../assets/settings-outline.svg"
+import gitHubIcon from "@/assets/logo-github.svg"
+import settingsIcon from "@/assets/settings-outline.svg"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
 

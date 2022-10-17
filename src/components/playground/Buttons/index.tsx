@@ -1,5 +1,5 @@
 import { generateGion, useSelector } from "@/store"
-import Button from "../Button"
+import Button from "@/components/Button"
 import qs from "qs"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
@@ -12,7 +12,7 @@ const Container = styled.div`
 	justify-content: center;
 `
 
-const Control = (): JSX.Element =>
+const Buttons = (): JSX.Element =>
 {
 	const dispatch = useDispatch()
 	const selector = useSelector(state => state)
@@ -50,4 +50,4 @@ const Control = (): JSX.Element =>
 	)
 }
 
-export default Control
+export default Buttons
