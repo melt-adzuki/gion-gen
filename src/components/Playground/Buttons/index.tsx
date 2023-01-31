@@ -20,7 +20,7 @@ const Buttons = (): JSX.Element =>
 	const result = selector.gion[selector.index]
 	const { index, salt, seed } = selector
 
-	const content = `${result} #擬音ジェネレーター\nhttps://gion.azuki.cf?${qs.stringify({ seed: seed + (salt - index) })}`
+	const content = `${result} #擬音ジェネレーター\nhttps://gion.adzuki.me?${qs.stringify({ seed: seed + (salt - index) })}`
 	const tweetLink = `https://twitter.com/intent/tweet?${qs.stringify({ text: content })}`
 
 	const [isCopied, setIsCopied] = useState<boolean>(false)
